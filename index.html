@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title> myPage </title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+
+	<body>
+
+		<div class='nav'>
+
+			<div class='siteNav'>
+					<div class='siteNavSub'>
+						<a href='main_home.html' class='siteNavLink' target='notesFrame'>
+							<img src='icons\menu_home.png' class='siteNavIcon'><span class='siteNavText'>About</span></a>
+					</div>
+					<!-- POWER SYSTEMS DESIGN -->
+					<div class='siteNavSub' id='siteNavSubDesign'>
+						<a href='#' class='siteNavLink' onclick="showMenuSubcategory('siteNavSubDesign','180px')">
+							<img src='icons\menu_design.png' class='siteNavIcon'><span class='siteNavText'>Design</span></a>
+
+				    	<a href='electrical_networksOverhead.html' 				class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Overhead networks / rating</span></a>
+				    	<a href='notes_circuitBreakers.html' 					class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Circuit breakers</span></a>
+				    	<a href='notes_powerTransformers.html' 					class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Power transformers</span></a>
+				    	<a href='electrical_frequencyResponseFundamentals.html' class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Frequency response fundamentals</span></a>
+					</div>
+					<!-- ENERGY MARKETS -->
+					<div class='siteNavSub' id='siteNavSubMarkets'>
+				    	<a href='#' class='siteNavLink' onclick="showMenuSubcategory('siteNavSubMarkets','220px')">
+				    		<img src='icons\menu_markets.png' class='siteNavIcon'><span class='siteNavText'>Markets</span></a>
+
+				    	<a href='markets_frequencyResponse.html'         	class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Frequency response</span></a>
+						<a href='markets_useOfSystemCharges.html'        	class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Use of system charges</span></a>
+				    	<a href='notes_electricityPriceForecasting.html'	class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Price forecasting</span></a>
+				    	<a href='notes_balancingMarkets.html' 				class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Balancing markets</span></a>
+				    	<a href='notes_distributionNetworksPlanning.html' 	class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Distribution networks planning</span></a>
+				    	<a href='trading_technicalAnalysis.html' 			class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Markets technical analysis</span></a>
+			    	</div>
+
+					<!-- ALGORITHMS -->
+					<div class='siteNavSub' id='siteNavSubAlgorithms'>
+				    	<a href='#' class='siteNavLink' onclick="showMenuSubcategory('siteNavSubAlgorithms','200px')">
+				    		<img src='icons\menu_math.png' class='siteNavIcon'><span class='siteNavText' >Algorithms</span></a>
+
+				    	<a href='notes_optimisationGradDescend.html' 		class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Optimisation / gradient descend</span></a>
+				    	<a href='notes_forecastingMethods.html' 			class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Forecasting / time-series</span></a>
+				    	<a href='notes_forecastingGaussian.html' 			class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Forecasting / gaussian process</span></a>
+				    	<a href='notes_forecastingFeatureSelection.html' 	class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Forecasting / feature selection</span></a>
+				    	<a href='software_dataPipelines.html' 				class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Data pipelines </span></a>
+						<a href='software_authentication.html'				class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Authentication </span></a>
+			    	</div>
+			</div>
+
+			<div class="myInfo">
+				<div style="padding-top: 5px;">
+					<a href = "mailto: e.loukarakis@outlook.com" title="e-mail"><img src="icons\social_email.png" class='siteNavIconInfo'></a>
+					<a href = "https://www.google.co.uk/maps/@51.4027867,-0.8804433,10z" target="_blank" title="GoogleMaps"><img src="icons\social_googleMaps.png"  class='siteNavIconInfo'></a>
+					<a href = "https://www.linkedin.com/in/eloukarakis" target="_blank" title="LinkedIn"><img src="icons\social_linkedIn.png"  class='siteNavIconInfo'></a>
+					<a href = "https://scholar.google.co.uk/citations?hl=en&user=X7StZ_8AAAAJ" target="_blank" title="Google Scholar"><img src="icons\social_googleScholar.png"  class='siteNavIconInfo'></a>
+					<br>
+					&copy 2020 <u>Emmanouil Loukarakis</u> All rights reserved.
+				</div>
+			</div>
+
+		</div>
+
+		<div class='content'>
+			<iframe src="main_home.html" name='notesFrame' id='notesFrame'></iframe>
+		</div>
+
+		<script>
+			function showMenuSubcategory(refID, longHeight) {
+				if (document.getElementById(refID).clientHeight > 26) {
+					document.getElementById(refID).style.height = '26px';
+				} else {
+					document.getElementById(refID).style.height = longHeight;
+				}
+
+			}
+		</script>
+
+
+
+	</body>
+</html>
