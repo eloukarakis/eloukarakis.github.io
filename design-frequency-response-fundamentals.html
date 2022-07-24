@@ -123,14 +123,14 @@
             function figure_typical_response(allRows) {
 
                 console.log(allRows);
-                var x = [], y = [], standard_deviation = [];
+                var x = [], y = []
 
                 for (var i=0; i<allRows.length; i++) {
                     row = allRows[i];
                     x.push( row['t'] );
                     y.push( row['f'] );
                 }
-                console.log( 'X',x, 'Y',y, 'SD',standard_deviation );
+                console.log( 'X',x, 'Y',y);
 
                 FIG1 = document.getElementById('img-typical-response');
     			Plotly.newPlot( FIG1,
