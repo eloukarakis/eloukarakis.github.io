@@ -127,8 +127,8 @@
 
                 for (var i=0; i<allRows.length; i++) {
                     row = allRows[i];
-                    x.push( row['t'] );
-                    y.push( row['f'] );
+                    x.push( parseFloat(row['t']) );
+                    y.push( parseFloat(row['f']) );
                 }
                 console.log( 'X',x, 'Y',y);
 
