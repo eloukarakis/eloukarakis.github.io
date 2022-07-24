@@ -1,0 +1,74 @@
+
+body {
+  font-size: 14px;
+  text-align: justify;
+}
+
+
+h1 {
+  display: block;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: bold;
+  color: rgb(26, 72, 201);
+  text-decoration: underline;
+}
+
+h2 {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(26, 72, 201);
+}
+
+ul.lit {
+  font-size: 12px;
+}
+
+div.note {
+  width: 100%;
+  float: left;
+  border-bottom: solid;
+  border-color: rgba(199,199,208,0.9);
+  padding-bottom: 10px;
+}
+
+div.mark{
+    padding: 4px;
+    margin: 4px;
+    border: solid 1px;
+    background-color: #bcf7c7;
+    border-color: #03961f;
+    border-radius: 8px;
+}
+
+div.img {
+    height: 300px;
+    width: 450px;
+    border: solid 2px;
+    border-color: #72b2f2;
+    border-radius: 8px;
+    margin: 10px;
+    float: right;
+}
+
+br.big {
+  margin-bottom: 14px;
+}
+
+.codeText{
+  background-color: rgb(209, 227, 255);
+  border-radius: 8px;
+  color: rgb(9, 148, 16);
+  font-size: 9px;
+  overflow: auto;
+  padding: 8px;
+}
+
+.mathText{
+  background-color: rgb(209, 227, 255);
+  border-radius: 8px;
+  color: rgb(9, 148, 16);
+  overflow: auto;
+  padding: 8px;
+}
