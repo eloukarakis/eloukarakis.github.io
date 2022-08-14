@@ -3,14 +3,13 @@
     <link rel="stylesheet" type="text/css" href="style-note.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-	<script id="MathJax-script" async
-	        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+	  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <title> Frequency response fundamentals </title>
 
     <body>
 
       	<div class='note'>
-	        <h2> What is frequency response </h2>
+	        <h1> What is frequency response </h1>
 	        An electrical power system may consist of a huge variety of devices
             - including large conventional generators (gas, diesel),
             wind turbines, demand in various forms (household, industrial)
@@ -119,22 +118,17 @@
 
 
 		<script>
-
-            function figure_typical_response(allRows) {
-
-                console.log(allRows);
-                var x = [], y = []
-
-                for (var i=0; i<allRows.length; i++) {
+        function figure_typical_response(allRows) {
+            var x = [], y = []
+            for (var i=0; i<allRows.length; i++) {
                     row = allRows[i];
                     x.push( parseFloat(row['t']) );
                     y.push( parseFloat(row['f']) );
                 }
-                console.log( 'X',x, 'Y',y);
 
-                FIG1 = document.getElementById('img-typical-response');
-    			Plotly.newPlot( FIG1,
-                                [{x: x, y: y }],
+        FIG1 = document.getElementById('img-typical-response');
+    		Plotly.newPlot( FIG1,
+                        [{x: x, y: y }],
                                 {
                                     margin: { t:50, b:50, l:50, r:10},
                                     title: 'Typical frequency response',
@@ -145,10 +139,9 @@
                             );
             }
 
-            Plotly.d3.csv('https://eloukarakis.github.io/data/design-typical-frequency-response.csv',
-                           function(data){ figure_typical_response(data) } );
-
-
+        Plotly.d3.csv('https://eloukarakis.github.io/data/design-typical-frequency-response.csv',
+                       function(data){ figure_typical_response(data) } );
+                       
 		</script>
 
     </body>

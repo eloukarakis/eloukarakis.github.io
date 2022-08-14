@@ -1,0 +1,160 @@
+
+<html>
+    <link rel="stylesheet" type="text/css" href="style-note.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title> Frequency response fundamentals </title>
+
+    <body>
+
+      	<div class='note'>
+          <h1> Current rating of overhead circuits </h1>
+
+	        Current flow through an electric circuit leads to energy losses which in turn
+          can result in increased conductor temperature. Excessive temperatures
+          may lead to a number of issues:<br>
+			    - conductor annealing (heating then slow cooling of the conductor metal) which
+          can result in reduced tensile strength<br>
+			    - grease (which serves as an anti-corrosion or anti-wear element) may flow
+           and exude from the conductor at temperatures in excess of 80C;<br>
+			    - high resistance connections may fail;<br>
+			    - increased conductor sag which might lead to insufficient clearance
+          to ground or obstacles (e.g. trees).<br>
+
+          <div class='mark'>
+              Current rating is a value of current that the circuit may safely
+              carry under typical operating conditions, so that the
+              probability of conductor failure is sufficently low.
+          </div>
+
+          A very low value ensures that there won't be any temperature issues,
+          but can be very costly as more circuits may be needed to serve a
+          given load.<br>
+          Depending on the shape of the load throughout the day a different
+          rating may apply e.g. circuits supplying industrial (constant) loads
+          often have their default rating scaled down. Different ratings may
+          also apply under different conditions, e.g. ratings for each
+          conductor in a double circuit can be scaled up, reflecting the lower
+          probability of a simultaneous outage during a high load and bad
+          weather conditions.<br>
+          Rating values for the same conductor may vary in different countries,
+          as various standards make slightly different assumptions about
+          some of the factors that are involved in relevant calculations.
+          Most of the following discussion focuses on the UK based standards.
+
+	    </div>
+
+      <div class='note'>
+        <h2> Overhead circuits thermal constraints </h2>
+
+        Under steady state conditions the heat balance equation is:
+        \[ I_{DC}^2 \cdot R_{DC} = P_F + P_R - P_S \]
+        Where \(I_{DC}\) the DC current in A, \(R_{DC}\) the conductor DC resistance
+        in Ohm/m, \(P_F,P_R,P_S\) the forced convection heat loss, radiation
+        loss and solar radiation heat gain in W/m respectively.
+        The resistance varies with temperature as follows:
+        \[ R_{DC} = R_{20}(1+a \cdot (T_c-20)) \]
+        Where \(R_{20}\) the conductor resistance at 20C in Ohm/m, \(a\)
+        the resistance temperature coefficient in 1/C, \(T_c\)
+        the conductor temperature in C. Studies in UK have indicated that
+        minimum wind speeds (hence convection loss) are three times greater
+        (because of thermals) when there is a high level of solar radiation.
+        As such, limiting conditions are typically more onerous at times
+        when there is no solar radiation and wind speeds are low. Consequently,
+        the solar radiation term may be omitted. The radiation loss may be calculated by:
+        \[ P_R = \pi D \ E \sigma ( (T_c+273)^4 - (T_a+273)^4 )\]
+        Where E the thermal emissivity of conductor surface - assumed equal
+        to 0.9 for P-27 calculations (typical IEEE and CIGRE standards value
+        is 0.5) - \( \sigma \) the Stefan-Boltzmann constant equal
+        to \(5.7 \cdot 10^{-8} W/m^2 \), D the conductor diameter
+        in m, \( T_a \) the ambient temperature in K - set to 2/20C
+        for winter/summer conditions for P-27 calculations. Finally,
+        the convection loss may be calculated by:
+        \[ P_F = \pi k_f \cdot Nu \cdot (T_c-T_a) \]
+        \[ k_f = (2.42 + 0.0035(T_c + T_a) ) \cdot 10^{-2} \]
+        \[ Nu =  \begin{bmatrix} 0.55 \cdot (0.034 + 0.575 Re^{0.487}) if Re \lt 3200 \\ 0.55 \cdot (0.071) + 0.901Re^{0.715} if Re \ge 3200 \end{bmatrix} \]
+        \[ Re = u \cdot D / u_f \]
+        \[ u_f = (132 + 0.48(T_c + T_a)) \cdot 10^{-7} \]
+        Where u is the wind speed in m/s - assumed equal to 0.5 for P-27
+        calculations. Note that the conductor temperature varies from the
+        core to the surface. The above equations assume a uniform
+        temperature for the whole conductor. The effect of this
+        assumption for most conductors is not significant. <br>
+
+      </div>
+
+      <div class='note'>
+          <div class='img' id='img-weather-probability'> </div>
+
+          <h2> Weather conditions </h2>
+
+          A series of experiments were conducted over a period of three years at Leatherhead,
+          UK where a conductor was placed under constant current throughout different seasons.
+          It was observed that the percentage of time that the conductor exceeded the design temperature was a function of:
+          \[ t_e = f(C_T) = f( \frac{I_{DC}^2 R_{DC}}{(P_F + P_R)|_{@designTemperature}}) \]
+          The function f was determined based on statistical processing of measurements
+          and is shown on the figure. The rating of the conductor for a give value of \(t_e \) is given by:
+          \[ I = \sqrt { \frac{C_T(P_F+P_R)|_{@designTemperature}}{R_{@designTemperature}} } \]
+          For a single circuit rating P-27 assumes \( t_e = 0.001% \) which corresponds to \( C_T = 0.912\).<br><br>
+
+          Flow of AC current through the conductor will increase the resistance (due to skin effect).
+          P-27 calculations are based on a range of approximate relations that convert
+          AC quantities to DC, e.g. for a ZEBRA conductor:
+          \[ I_{AC} = I_{DC} \cdot (1.0123 + 2.319 \cdot I_{DC} \cdot 10^{-5})^{-1} \]
+          Or for a LYNX conductor:
+          \[ I_{AC} = I_{DC} \cdot (1.0045 + 0.09 \cdot I_{DC} \cdot 10^{-5})^{-1} \]
+          The effect on rating can be rather limited, especially for conductors with
+          a cross section equal of smaller than LYNX (95mm2).<br>
+
+      </div>
+
+      <div class='note'>
+
+          <h2> An example </h2>
+
+          The following calculations apply to summer conditions for a LYNX conductor:
+          \[ P_R = 3.14 \cdot 5.7 \cdot 10^{-8} \cdot 0.9 \cdot 19.5 \cdot 10^{-3} (323^4-293^4 ) = 11W/m \]
+          \[ u_f = (132 + 0.48 \cdot 70) 10^{-7} = 165.6 \cdot 10^{-7} \]
+          \[ Re  = 0.5 \cdot 19.5 \cdot 10^{-3}/(165.6 \cdot 10^{-7} ) = 588.8 \]
+          \[ Nu  = 0.55 \cdot (0.034+0.575 \cdot 588.8^{0.487} ) = 7.0818 \]
+          \[ P_F = 3.14 \cdot (2.42+0.0035 \cdot 70) 10^{-2} \cdot 7.0818 \cdot 30 = 17.8W/m \]
+          \[ R_{DC} = 0.158 (1 + 0.00428 \cdot 30) = 0.178 Ohm/km \]
+          \[ I_{DC} = \sqrt {0.912 \cdot (17.8+11)/(178 \cdot 10^{-6}) } = 386.3A \]
+          \[ I_{AC@0.001} = 386.3 / (1.0045 + 0.09 \cdot 386.3 \cdot 10^{-6} ) = 384.6A \]
+          If we opted for a higher probability of excursion (e.g. 3%) then the rating would increase to:
+          \[ I_{AC@3}= \sqrt {1.170/0.912} I_{AC@0.001} = 435.6A \]
+          There is a 13% increase in rated current, which is actually the relation
+          between single and multi-circuit ratings in P-27.
+      </div>
+
+      <div class='note'>
+          <h2> Useful references </h2>
+          <ul class='lit'>
+            <li> ENA ER-P27 (2020). <u>Current rating guide for high voltage overhead lines operating in the UK distribution system</u>. </li>
+            <li> C.F. Price, R.R. Gibbon (1997). <u>Statistical approach to thermal rating of overhead lines for power transmission and distribution</u>. IEEE Proceedings C - Generation, Transmission and Distribution. 130 (5): 245-256.</li>
+
+          </ul>
+      </div>
+
+	    <script>
+
+          FIG1 = document.getElementById('img-weather-probability');
+    			Plotly.newPlot( FIG1,
+                                [{x: [0, 0.9, 0.912, 0.93, 0.98, 1, 1.018, 1.03, 1.063, 1.085,
+                                      1.135, 1.17, 1.245, 1.315, 1.382, 1.475, 1.64, 1.86, 1000],
+                                  y: [0.00001, 0.00001, 0.001, 0.01, 0.1, 0.2, 0.3, 0.4, 0.7, 1,
+                                      2, 3, 6, 10, 14, 20, 30, 40, 40] }],
+                                {
+                                    margin: { t:50, b:50, l:50, r:10},
+                                    title: 'Rating excursion probability',
+                                    xaxis: {'title' : 'Ct', 'range': [0.6, 2]},
+                                    yaxis: {'title' : 'excursion probability [%]', 'range': [0, 38]},
+                                    font: {'size':10}
+                                },
+                            );
+
+		  </script>
+
+    </body>
+</html>

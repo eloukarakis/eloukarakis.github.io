@@ -7,11 +7,10 @@ body {
 
 h1 {
   display: block;
-  font-size: 24px;
+  font-size: 20px;
   font-style: italic;
   font-weight: bold;
   color: rgb(26, 72, 201);
-  text-decoration: underline;
 }
 
 h2 {
@@ -34,12 +33,14 @@ div.note {
 }
 
 div.mark{
+    width: 80%;
     padding: 4px;
     margin: 4px;
     border: solid 1px;
     background-color: #bcf7c7;
     border-color: #03961f;
     border-radius: 8px;
+    font-size: 15px;
 }
 
 div.img {
