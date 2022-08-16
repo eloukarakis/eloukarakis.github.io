@@ -9,7 +9,7 @@
     <body>
 
       	<div class='note'>
-          <h1> Unconstrained optimisation & line search </h1>
+          <h1> Background info </h1>
 
           Let's assume we want to solve \(min_xf(x)\),
           where x is a vector. One generic approach for solving this problem
@@ -19,10 +19,13 @@
           far along we should move along that direction.
           Rather than computing \(a, p_k\) exactly, we are instead looking for fast approximate methods
           which would (hopefully) allow for fast convergence to the solution.
-          This is the line-search approach.
+          This is the so called line-search approach - we are after all searching for a
+          step size \(a\) along the line defined by \(p_k\).
           <div class='mark'>
-            Gradient (or steepest) descent is the simplest line-search based approach
-            for solving unconstrained optimisation problems.
+            Gradient (or steepest) descent can be thought of as the simplest
+            algorithm based on the line-search concept (step-size \(a\) fixed and \(p_k\) set
+            equal to minus the function derivative at the point) for solving unconstrained
+            optimisation problems.
           </div>
 
 	    </div>
@@ -33,12 +36,36 @@
 
         Assuming that we can calculate a derivative for the function, it would
         be reasonable to move along exactly that direction:
-        \[ x_{k+1} = x_k - a \cdot \nabla f_k \]
+        <div class='algorithm'>
+            GRADIENT DESCENT<br><br>
+            (0) Set \(a>0\) <br>
+            (1) Set \( x_{k+1} = x_k - a_k \cdot \nabla f_k \) <br>
+            (2) If \( |x_{k+1} - x_k|<\epsilon \) stop <br>
+        </div>
         Iterations are stopped as soon as the derivative is below a certain
         tolerance.<br><br>
+
         The step size parameter may simply be set to a predetermined value. Too
         high values can lead to instability (algorithm oscillating between points
-        or simply diverging), too low values can lead to very slow convergence.<br><br>
+        or simply diverging), too low values can lead to very slow convergence.<br>
+        A work-around to this is to introduce an inner iteration loop in
+        the algorithm:
+        <div class='algorithm'>
+            BACKTRACKING LINE-SEARCH<br><br>
+            (0) Set \( a = a_0, \rho \in (0,1), c \in (0,1) \)<br>
+            (1) Check if
+            \( f(x_k+a\cdot p_k) \le f(x_k) + c \cdot a \nabla f_k^T \cdot p_k \) <br>
+            (2a) If true then \( a = \rho \cdot a \)<br>
+            (2b) ... else stop and set \( a_k = a \)
+        </div>
+
+        For non-convex functions the algorithm is likely to converge to a
+        local minimum rather than the global one.<br>
+
+        For non-smooth functions, or for problems where the function is not
+        kwown (rather a set of discrete points / observations is provided) a
+        closed-form derivative would not be available and an approximation
+        would be required.<br>
 
       </div>
 
@@ -49,8 +76,8 @@
           y1 = [4,3.24,2.56,1.96,1.44,1,0.64,0.36,0.16,0.04,0,
                 0.04,0.16,0.36,0.64,1,1.44,1.96,2.56,3.24,4]
 
-          x2 = [-1.50,1.20,-0.96,0.77,-0.61,0.49,-0.39,0.31,-0.25,0.20,-0.16,]
-          y2 = [2.250,1.440,0.922,0.590,0.377,0.242,0.155,0.099,0.063,0.041,0.026]
+          x2 = [-1.50,1.20,-0.96,0.77,-0.61,0.49,-0.39,0.31,-0.25,0.20]
+          y2 = [2.250,1.440,0.922,0.590,0.377,0.242,0.155,0.099,0.063,0.041]
 
           FIG1 = document.getElementById('img-gradient-descent');
     			Plotly.newPlot(FIG1,

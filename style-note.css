@@ -33,7 +33,7 @@ div.note {
 }
 
 div.mark{
-    width: 80%;
+    width: 60%;
     padding: 4px;
     margin: 4px;
     border: solid 1px;
@@ -41,6 +41,18 @@ div.mark{
     border-color: #03961f;
     border-radius: 8px;
     font-size: 15px;
+}
+
+div.algorithm{
+    width: 60%;
+    padding: 4px;
+    margin: 4px;
+    border: solid 1px;
+    background-color: #ebedec;
+    border-color: #8c9691;
+    border-radius: 8px;
+    font-size: 10px;
+    color: #07ab59;
 }
 
 div.img {
