@@ -10,12 +10,14 @@
 
       	<div class='note'>
 	        <h1> What is frequency response </h1>
+          <p>
 	        An electrical power system may consist of a huge variety of devices
-            - including large conventional generators (gas, diesel),
-            wind turbines, demand in various forms (household, industrial)
-            and the circuits connecting all these together. The system itself is designed to operate within specific voltage limits,
-            specified in terms of voltage amplitude and frequency. When the system is subjected to a disturbance -
-            typically the loss or addition of a device - the voltage fluctuates. <br>
+          - including large conventional generators (gas, diesel),
+          wind turbines, demand in various forms (household, industrial)
+          and the circuits connecting all these together. The system itself is designed to operate within specific voltage limits,
+          specified in terms of voltage amplitude and frequency. When the system is subjected to a disturbance -
+          typically the loss or addition of a device - the voltage fluctuates. <br>
+          <p>
             <div class='mark'>
                 Frequency response refers to how voltage frequency changes over time, particularly after a contingency (e.g. generating plant outage).
             </div>
@@ -23,7 +25,7 @@
 
 	    <div class='note'>
 	        <h2> What is involved </h2>
-
+          <p>
 	        Conventional generators consist of: 1) a prime mover - that's the gas turbine or diesel engine that burns fuel to move the generator;
             2) a prime mover control system - an electromechanical system that controls the flow of fuel; 3) an electrical generator -
             which is a combination of electrical circuits and rotating parts; 4) generator control systems -
@@ -38,14 +40,14 @@
             the generator looses kinetic energy (hence frequency drops) and vice-versa. While detailed simulations would
             be required to accurately capture frequency response dynamics, it is possible to capture the basic
             frequency response characteristics through a simplified set of equations.<br><br>
-
+          </p>
 	    </div>
 
 	    <div class='note'>
 
 	        <h2> The basic equations </h2>
-
-			The first of these equations is one describing the generator's motion:
+          <p>
+			    The first of these equations is one describing the generator's motion:
 	        \[J\frac{d\omega_m}{dt} = T_m - T_e\]
 	        Where \(J\) is the generator inertia in kg.m<sup>2</sup>, \(\omega_m\)
             is the (electrical) rotational speed in rad/sec, and \(T_e,T_m\)
@@ -62,8 +64,8 @@
             of systems that convert fuel into power that moves the generator. In the simplest case
             associated systems (which applies to diesel engines or non-reheat steam turbines) the associated system may be represented through two equations:
 	        \[T_g \frac{dP_t}{dt} + P_t = P_{ref}\]
-			\[T_t \frac{dP_m}{dt} + P_m = P_t\]
-			Where \(T_g\) is the time-constant associated with the governor / control-system, \(T_t\)
+			       \[T_t \frac{dP_m}{dt} + P_m = P_t\]
+			          Where \(T_g\) is the time-constant associated with the governor / control-system, \(T_t\)
             is the time-constant associated with the prime mover, and \(T_{ref}\) is the desired power output from the generator.<br>
 
 	        Generators typically operate in any of either modes: 1) at a fixed \(P_{ref}\) set-point
@@ -74,12 +76,14 @@
             This proportional control scheme enables us to know for any given frequency deviation, how power is shared among connected generators. <br><br>
 	        A smaller number of generators may have a slower control system that tries
             to get any frequency error back to zero. This is to avoid oscillations among different generators competing to restore the frequency.
-	    </div>
+          </p>
+      </div>
 
 	    <div class='note'>
 	    	<div class='img' id='img-typical-response'> </div>
 
 	    	<h2> Typical frequency response </h2>
+        <p>
 	    	Consider a system where the generation and demand are in balance, equal to each other, when suddenly one generator is lost.
             Using the equations above we can calculate the frequency response trajectory as seen on the figure.<br>
             - At 1sec the generator is lost and demand is more than the energy produced by fuel burnt by the generators.
@@ -100,7 +104,7 @@
 	    	In practice demand and generation (especially from renewables) constantly change, with the large generators
             trying to catch up. As a consequence the frequency constantly oscillates around 50Hz. More often than not,
             the imbalance / mismatch between demand and generation is small and the frequency deviations are quite limited.
-
+          </p>
             <div class='mark'>
                 This typical response implies that a system operator should ensure that,
                 at any given time, the system has a sufficient combination of inertia and generator response

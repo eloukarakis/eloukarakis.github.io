@@ -4,6 +4,9 @@ body {
   text-align: justify;
 }
 
+p {
+  max-width: 120ch;
+}
 
 h1 {
   display: block;
@@ -33,7 +36,6 @@ div.note {
 }
 
 div.mark{
-    width: 60%;
     padding: 4px;
     margin: 4px;
     border: solid 1px;
@@ -41,6 +43,7 @@ div.mark{
     border-color: #03961f;
     border-radius: 8px;
     font-size: 15px;
+    max-width: 100ch;
 }
 
 div.algorithm{
