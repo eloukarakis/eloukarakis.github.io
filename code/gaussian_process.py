@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import gpflow
 import tensorflow as tf
+import pandas as pd
 
 def test_basic():
     pass
@@ -24,7 +25,7 @@ def basic_fit():
                                           variance     = 1)
     
     X0 = np.linspace(-1.5, 1.5, 1000)[:, None]
-    Y0 = generate_sample_data(X0)
+    Y0 = generate_sample_data(X0,1)
     
     N = 20
     X = np.random.normal(0,0.7,N)  # X values
@@ -36,7 +37,7 @@ def basic_fit():
     opt = gpflow.optimizers.Scipy()
     opt.minimize(m.training_loss, m.trainable_variables, options=dict(maxiter=100))
 
-    Xt = np.arange(-1.5,1.5,0.01).reshape(-1,1)
+    Xt = np.arange(-1.5,1.5,0.04).reshape(-1,1)
     #Xt = np.arange(0,50,0.01).reshape(-1,1)
     
     Yt, Yv = m.predict_f(Xt)
@@ -50,6 +51,17 @@ def basic_fit():
                     color = 'green', alpha = 0.4)
     
     gpflow.utilities.print_summary(m)
+    
+    
+    pd.DataFrame(data = {'x':Xt.flatten(),
+                                'med': Yt,
+                                'varH': Yt-Yv*1.96,
+                                'varL': Yt+Yv*1.96
+                                }).to_csv('C:/Users/elouk/OneDrive/eloukarakis.github.io/data/gaussian_process_1a.csv')
+    
+    pd.DataFrame(data = {'x':X,
+                                'y': Y,
+                                }).to_csv('C:/Users/elouk/OneDrive/eloukarakis.github.io/data/gaussian_process_1b.csv')
     
     
 def stepTwo():
