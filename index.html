@@ -11,54 +11,44 @@
 	<body>
 
 		<div class='nav'>
-
 			<div class='siteNav'>
-					<div class='siteNavSub'>
-						<a href='main_home.html' class='siteNavLink' target='notesFrame'>
-							<img src='icons\menu_home.png' class='siteNavIcon'><span class='siteNavText'>About</span></a>
-					</div>
-					<!-- POWER SYSTEMS DESIGN -->
-					<div class='siteNavSub' id='siteNavSubDesign'>
-						<a href='#' class='siteNavLink' onclick="showMenuSubcategory('siteNavSubDesign','180px')">
-							<img src='icons\menu_design.png' class='siteNavIcon'><span class='siteNavText'>Design & technical</span></a>
-				    	<a href='design-circuits-overhead-rating.html' class='siteNavLink' target='notesFrame'>
-								<span class='siteNavTextSub'>Overhead circuits rating</span></a>
-				  <!--  	<a href='notes_circuitBreakers.html' 					class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Circuit breakers</span></a>-->
-				   <!-- 	<a href='notes_powerTransformers.html' 					class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Power transformers</span></a>-->
-				    	<a href='design-frequency-response-fundamentals.html' class='siteNavLink' target='notesFrame'>
-								<span class='siteNavTextSub'>Frequency response fundamentals</span></a>
-					</div>
-					<!-- ENERGY MARKETS -->
-					<div class='siteNavSub' id='siteNavSubMarkets'>
-				    	<a href='#' class='siteNavLink' onclick="showMenuSubcategory('siteNavSubMarkets','220px')">
-				    		<img src='icons\menu_markets.png' class='siteNavIcon'><span class='siteNavText'>Markets</span></a>
+				<div class='siteNavSeparator'>
+					&#x21af; general info
+				</div>
+				<div class='siteNavSub'>
+					<a href='about.html' class='siteNavLink' target='notesFrame'>
+						<img src='icons\menu_home.png' class='siteNavIcon'><span class='siteNavText'>About</span></a>
+				</div>
+				<div class='siteNavSub'>
+					<a href='portfolio.html' class='siteNavLink' target='notesFrame'>
+						<img src='icons\menu_portfolio.png' class='siteNavIcon'><span class='siteNavText'>Portfolio</span></a>
+				</div>
 
-				<!--    	<a href='markets_frequencyResponse.html'         	class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Frequency response</span></a>-->
-						<!--<a href='markets_useOfSystemCharges.html'        	class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Use of system charges</span></a>
-				    	<a href='notes_electricityPriceForecasting.html'	class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Price forecasting</span></a>
-				    	<a href='notes_balancingMarkets.html' 				class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Balancing markets</span></a>
-				    	<a href='notes_distributionNetworksPlanning.html' 	class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Distribution networks planning</span></a>
-				    	<a href='trading_technicalAnalysis.html' 			class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Markets technical analysis</span></a>-->
-			    	</div>
-
-					<!-- ALGORITHMS -->
-					<div class='siteNavSub' id='siteNavSubAlgorithms'>
-				    	<a href='#' class='siteNavLink' onclick="showMenuSubcategory('siteNavSubAlgorithms','200px')">
-				    		<img src='icons\menu_math.png' class='siteNavIcon'><span class='siteNavText'>Algorithms</span></a>
-
-				   			<a href='algo-gradient-descent.html' class='siteNavLink' target='notesFrame'>
-									<span class='siteNavTextSub'>Gradient descent & variants</span></a>
-				    	<!--<a href='notes_forecastingMethods.html' 			class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Forecasting / time-series</span></a>
-				    	<a href='notes_forecastingGaussian.html' 			class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Forecasting / gaussian process</span></a>
-				    	<a href='notes_forecastingFeatureSelection.html' 	class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Forecasting / feature selection</span></a>
-				    	<a href='software_dataPipelines.html' 				class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Data pipelines </span></a>
-						<a href='software_authentication.html'				class='siteNavLink' target='notesFrame'><span class='siteNavTextSub'>Authentication </span></a>-->
+				<div class='siteNavSeparator'>
+					&#x21af; technical blog
+				</div>
+				<div class='siteNavSub' id='siteNavSubDesign'> <!-- POWER SYSTEMS DESIGN -->
+					<a href='#' class='siteNavLink' onclick="showMenuSubcategory('siteNavSubDesign','180px')">
+						<img src='icons\menu_design.png' class='siteNavIcon'><span class='siteNavText'>Design & technical</span></a>
+				    <a href='design-circuits-overhead-rating.html' class='siteNavLink' target='notesFrame'>
+							<span class='siteNavTextSub'>Overhead circuits rating</span></a>
+				    <a href='design-frequency-response-fundamentals.html' class='siteNavLink' target='notesFrame'>
+							<span class='siteNavTextSub'>Frequency response fundamentals</span></a>
+				</div>
+				<div class='siteNavSub' id='siteNavSubMarkets'> <!-- ENERGY MARKETS -->
+				    <a href='#' class='siteNavLink' onclick="showMenuSubcategory('siteNavSubMarkets','220px')">
+				    	<img src='icons\menu_markets.png' class='siteNavIcon'><span class='siteNavText'>Markets</span></a>
 			    </div>
-
-					<div class='siteNavSub'>
-						<a href='references.html' class='siteNavLink' target='notesFrame'>
-							<img src='icons\menu_books.png' class='siteNavIcon'><span class='siteNavText'>Useful references</span></a>
-					</div>
+				<div class='siteNavSub' id='siteNavSubAlgorithms'> <!-- ALGORITHMS -->
+				    <a href='#' class='siteNavLink' onclick="showMenuSubcategory('siteNavSubAlgorithms','200px')">
+				    	<img src='icons\menu_math.png' class='siteNavIcon'><span class='siteNavText'>Algorithms</span></a>
+				   	<a href='algo-gradient-descent.html' class='siteNavLink' target='notesFrame'>
+						<span class='siteNavTextSub'>Gradient descent & variants</span></a>
+			    </div>
+				<div class='siteNavSub'>
+					<a href='references.html' class='siteNavLink' target='notesFrame'>
+						<img src='icons\menu_books.png' class='siteNavIcon'><span class='siteNavText'>Useful references</span></a>
+				</div>
 			</div>
 
 			<div class="myInfo">
@@ -75,7 +65,7 @@
 		</div>
 
 		<div class='content'>
-			<iframe src="main_home.html" name='notesFrame' id='notesFrame'></iframe>
+			<iframe src="about.html" name='notesFrame' id='notesFrame'></iframe>
 		</div>
 
 		<script>
