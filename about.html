@@ -1,0 +1,63 @@
+
+<html>
+    <link rel="stylesheet" type="text/css" href="style-note.css">
+    <title> About </title>
+    <style>
+        p.img{
+            font-size: 30px;
+            font-style: italic;
+            color: #d3d8e0;
+            background-color: #56637a;
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 10px;
+            padding-bottom: 10px
+        }
+
+        img.show{
+            width: 100%;
+            filter:grayscale(30%) blur(2px) opacity(80%);
+        }
+
+        div.imgHolder{
+            position: relative;
+            width: 100%;
+            height: 600px;
+            background-attachment: fixed;
+            background-position: left top;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+    </style>
+
+    <body>
+
+        <div class="imgHolder" style="background-image: url('images/wind-farm.jpg');">
+            <div style="position:absolute;left:10%;bottom:65%">
+                <p class="img"> Hi! </p> </div>
+            <div style="position:absolute;left:35%;bottom:15%">
+                <p class="img"> I'm an<br> energy systems<br> engineer </p> </div>
+        </div>
+
+        <div class="imgHolder" style="background-image: url('images/snowy-pole.jpg');">
+            <div style="position:absolute;left:10%;bottom:65%">
+                <p class="img"> with experience <br> covering </p> </div>
+            <div style="position:absolute;left:25%;bottom:45%">
+                <p class="img"> ... from power systems<br> fundamentals </p> </div>
+            <div style="position:absolute;left:45%;bottom:25%">
+                <p class="img"> ... to energy <br> markets </p> </div>
+            <div style="position:absolute;left:55%;bottom:5%">
+                <p class="img"> ... and applied<br> OR & ML </p> </div>
+        </div>
+
+        <div class="imgHolder" style="background-image: url('images/power-transformer.jpg');">
+            <div style="position:absolute;left:10%;bottom:65%">
+                <p class="img"> Need help with a project? </p> </div>
+            <div style="position:absolute;left:25%;bottom:25%">
+                <p class="img">  Contact me! </div>
+        </div>
+
+
+    </body>
+</html>
