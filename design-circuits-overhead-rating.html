@@ -10,7 +10,7 @@
 
       	<div class='note'>
           <h1> Current rating of overhead circuits </h1>
-
+          <p>
 	        Current flow through an electric circuit leads to energy losses which in turn
           can result in increased conductor temperature. Excessive temperatures
           may lead to a number of issues:<br>
@@ -21,13 +21,14 @@
 			    - high resistance connections may fail;<br>
 			    - increased conductor sag which might lead to insufficient clearance
           to ground or obstacles (e.g. trees).<br>
-
+          </p>
           <div class='mark'>
               Current rating is a value of current that the circuit may safely
               carry under typical operating conditions, so that the
               probability of conductor failure is sufficently low.
           </div>
 
+          <p>
           A very low value ensures that there won't be any temperature issues,
           but can be very costly as more circuits may be needed to serve a
           given load.<br>
@@ -42,12 +43,12 @@
           as various standards make slightly different assumptions about
           some of the factors that are involved in relevant calculations.
           Most of the following discussion focuses on the UK based standards.
-
+          </p>
 	    </div>
 
       <div class='note'>
         <h2> Overhead circuits thermal constraints </h2>
-
+        <p>
         Under steady state conditions the heat balance equation is:
         \[ I_{DC}^2 \cdot R_{DC} = P_F + P_R - P_S \]
         Where \(I_{DC}\) the DC current in A, \(R_{DC}\) the conductor DC resistance
@@ -81,14 +82,14 @@
         core to the surface. The above equations assume a uniform
         temperature for the whole conductor. The effect of this
         assumption for most conductors is not significant. <br>
-
+        </p>
       </div>
 
       <div class='note'>
           <div class='img' id='img-weather-probability'> </div>
 
           <h2> Weather conditions </h2>
-
+          <p>
           A series of experiments were conducted over a period of three years at Leatherhead,
           UK where a conductor was placed under constant current throughout different seasons.
           It was observed that the percentage of time that the conductor exceeded the design temperature was a function of:
@@ -106,13 +107,13 @@
           \[ I_{AC} = I_{DC} \cdot (1.0045 + 0.09 \cdot I_{DC} \cdot 10^{-5})^{-1} \]
           The effect on rating can be rather limited, especially for conductors with
           a cross section equal of smaller than LYNX (95mm2).<br>
-
+          </p>
       </div>
 
       <div class='note'>
 
           <h2> An example </h2>
-
+          <p>
           The following calculations apply to summer conditions for a LYNX conductor:
           \[ P_R = 3.14 \cdot 5.7 \cdot 10^{-8} \cdot 0.9 \cdot 19.5 \cdot 10^{-3} (323^4-293^4 ) = 11W/m \]
           \[ u_f = (132 + 0.48 \cdot 70) 10^{-7} = 165.6 \cdot 10^{-7} \]
@@ -126,6 +127,7 @@
           \[ I_{AC@3}= \sqrt {1.170/0.912} I_{AC@0.001} = 435.6A \]
           There is a 13% increase in rated current, which is actually the relation
           between single and multi-circuit ratings in P-27.
+          </p>
       </div>
 
 	    <script>
