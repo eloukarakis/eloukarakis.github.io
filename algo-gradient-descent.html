@@ -1,17 +1,16 @@
-
+<!DOCTYPE html>
 <html>
     <link rel="stylesheet" type="text/css" href="style-note.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-	  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <title> Gradient descent </title>
 
     <body>
 
       	<div class='note'>
           <h1> Background info </h1>
-          <p>
-          Let's assume we want to solve \(min_xf(x)\),
+          <p> Let's assume we want to solve \(min_xf(x)\),
           where x is a vector. One generic approach for solving this problem
           is to iteratively solve instead \(min_{a>0}f(x_k+a\cdot p_k)\) - starting from a
           point \(x_k\), we first try to find a direction \(p_k\) along which the value
@@ -20,8 +19,7 @@
           Rather than computing \(a, p_k\) exactly, we are instead looking for fast approximate methods
           which would (hopefully) allow for fast convergence to the solution.
           This is the so called line-search approach - we are after all searching for a
-          step size \(a\) along the line defined by \(p_k\).
-          </p>
+          step size \(a\) along the line defined by \(p_k\).</p>
           <div class='mark'>
             Gradient (or steepest) descent can be thought of as the simplest
             algorithm based on the line-search concept (step-size \(a\) fixed and \(p_k\) set
@@ -31,47 +29,68 @@
 
 	    </div>
 
-      <div class='note'>
-        <div class='img' id='img-gradient-descent'> </div>
-        <h2> Gradient descent </h2>
-        <p>
-        Assuming that we can calculate a derivative for the function, it would
-        be reasonable to move along exactly that direction:
-        </p>
-        <div class='algorithm'>
-            GRADIENT DESCENT<br><br>
-            (0) Set \(a>0\) <br>
-            (1) Set \( x_{k+1} = x_k - a_k \cdot \nabla f_k \) <br>
-            (2) If \( |x_{k+1} - x_k|<\epsilon \) stop <br>
-        </div>
-        <p>
-        Iterations are stopped as soon as the derivative is below a certain
-        tolerance.<br><br>
+        <div class='note'>
+            <div class='img' id='img-gradient-descent'> </div>
+            <h2> Gradient descent </h2>
+            <p> Assuming that we can calculate a derivative for the function, it would
+            be reasonable to move along exactly that direction: </p>
+            <div class='algorithm'>
+                GRADIENT DESCENT<br><br>
+                (0) Set \(a>0\) <br>
+                (1) Set \( x_{k+1} = x_k - a_k \cdot \nabla f_k \) <br>
+                (2) If \( |x_{k+1} - x_k|<\epsilon \) stop <br>
+            </div>
+            <p> Iterations are stopped as soon as the derivative is below a certain
+            tolerance.<br><br>
 
-        The step size parameter may simply be set to a predetermined value. Too
-        high values can lead to instability (algorithm oscillating between points
-        or simply diverging), too low values can lead to very slow convergence.<br>
-        A work-around to this is to introduce an inner iteration loop in
-        the algorithm:
-        </p>
-        <div class='algorithm'>
-            BACKTRACKING LINE-SEARCH<br><br>
-            (0) Set \( a = a_0, \rho \in (0,1), c \in (0,1) \)<br>
-            (1) Check if
-            \( f(x_k+a\cdot p_k) \le f(x_k) + c \cdot a \nabla f_k^T \cdot p_k \) <br>
-            (2a) If true then \( a = \rho \cdot a \)<br>
-            (2b) ... else stop and set \( a_k = a \)
-        </div>
-        <p>
-        For non-convex functions the algorithm is likely to converge to a
-        local minimum rather than the global one.<br>
+            The step size parameter may simply be set to a predetermined value. Too
+            high values can lead to instability (algorithm oscillating between points
+            or simply diverging), too low values can lead to very slow convergence.<br>
+            A work-around to this is to introduce an inner iteration loop in
+            the algorithm: </p>
+            <div class='algorithm'>
+                BACKTRACKING LINE-SEARCH<br><br>
+                (0) Set \( a = a_0, \rho \in (0,1), c \in (0,1) \)<br>
+                (1) Check if
+                \( f(x_k+a\cdot p_k) \le f(x_k) + c \cdot a \nabla f_k^T \cdot p_k \) <br>
+                (2a) If true then \( a = \rho \cdot a \)<br>
+                (2b) ... else stop and set \( a_k = a \)
+            </div>
+            <p> For non-convex functions the algorithm is likely to converge to a
+            local minimum rather than the global one.<br>
 
-        For non-smooth functions, or for problems where the function is not
-        kwown (rather a set of discrete points / observations is provided) a
-        closed-form derivative would not be available and an approximation
-        would be required.<br>
-        </p>
-      </div>
+            For non-smooth functions, or for problems where the function is not
+            kwown (rather a set of discrete points / observations is provided) a
+            closed-form derivative would not be available and an approximation
+            would be required.<br></p>
+        </div>
+
+        <div class='note'>
+            <h2> Variants </h2>
+            <p> One possible use of gradient descent is fitting a function
+            (e.g. linear) over a dataset. In this case we are typically trying to
+            minimise the errors between the function and points in the dataset.
+            The partial derivatives of the parameters we are fitting are
+            dependent on the errors of all points in the dataset and we could
+            do the calculations accordingly. This approach where we use the
+            complete dataset at each iteration is <b>batch gradient
+            descent</b>.<br><br>
+
+            In cases where the dataset is significantly large however, such
+            computations might take significant time. An alternative would be
+            to pick a single point int the data-set at random and carry the
+            iteration based only on that - consequently derivative calculations
+            can be  much faster. This approach is called <b>stochastic gradient
+            descent</b>.<br><br>
+
+            Stochastic gradient descent is unlikely to converge with the same
+            accuracy as batch gradient descent to the optimal parameters and
+            the convergence will not be as smooth, but it can be much
+            faster for large data-sets. A compromise between the two approaches
+            can be the so-called <b>mini-batch gradient descent</b> where a
+            randomly selected subset of the available data is used at each
+            iteration.<br></p>
+        </div>
 
 	    <script>
 
@@ -84,19 +103,17 @@
           y2 = [2.250,1.440,0.922,0.590,0.377,0.242,0.155,0.099,0.063,0.041]
 
           FIG1 = document.getElementById('img-gradient-descent');
-    			Plotly.newPlot(FIG1,
-                         [{x: x1, y: y1,
-                           name: 'function'},
-                          {x: x2, y: y2,
-                           name: 'solution trajectory'}],
+    	  Plotly.newPlot(FIG1,
+                         [{x: x1, y: y1, name: 'function'},
+                          {x: x2, y: y2, name: 'solution trajectory'}],
                           {margin: { t:50, b:50, l:50, r:10},
-                           title: 'Gradient descent on simple quadratic function',
+                           title: 'Gradient descent on quadratic function',
                            xaxis: {'title' : 'x', 'range': [-2,2]},
                            yaxis: {'title' : 'f(x)', 'range': [-0.001, 2.4]},
                            font: {'size':10}},
                         );
 
-		  </script>
+		</script>
 
     </body>
 </html>
