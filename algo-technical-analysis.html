@@ -1,0 +1,85 @@
+
+<html>
+    <link rel="stylesheet" type="text/css" href="style-note.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title> Gradient descent </title>
+
+    <body>
+
+      	<div class='note'>
+          <h1> Background info </h1>
+          <p> There are three main approaches on could adopt to forecast prices and
+          subsequently trade in the market.<br>
+          The first is fundamental analysis, where one attempts to identify the
+          intrinsic value of the investment through analysis of past company
+          financials (or commodity demand).<br>
+          The second is technical analysis, where one attempts to predict
+          market dynamics based on past historic price patterns. Alternatively,
+          through quantitative analysis - by applying more rigorous mathematical
+          analysis on historical data, including assessing technical analysis
+          approaches and their performance - it is possible to come up with
+          trading methods with a certain degree of success.
+          Finally, one may follow publicly available information and news to
+          form an idea about how the market is expected to move.<br> </p>
+
+	    </div>
+
+        <div class='note'>
+            <h2> Technical analysis rationale </h2>
+            <p> The reasoning behind technical analysis is that there are
+            inefficiencies which do not allow the market to perfectly discount
+            available information about an asset's value. For example, there
+            might be some insider activity that could start affecting an asset's
+            price even before news break out. Furthermore, even when all news
+            become available not all market participants will act at the same
+            moment, while there might also be some momentum that results in the
+            asset's price being much lower or higher than it is actually worth.<br><br>
+
+            Technical analysis is based on the Dow theory which assumes that:
+            - The averages (market trend) will eventually discount everything<br>
+            - There are three key trends in the market: a primary one which can
+            last months to years; a secondary reaction which lasts weeks to
+            months; and minor trends which last days to weeks.<br>
+            - Primary trends have three phases: accumulation where informed
+            participants buy more of the asset while others being bearish sell;
+            trending where prices start to increase as confidence builds (or the
+            opposite); distribution where informed participants sell off while
+            others continue to buy (or the opposite) following the trend.
+            - A trend will persist until there is evidence to the contrary.
+            - Averages from different indices must give similar indications (a
+            single indicator is not enough).
+            - Volumes must confirm the trend - i.e. they should be expancing in
+            the direction of the existing trend.
+        </div>
+
+
+
+	    <script>
+
+          x1 = [-2,-1.8,-1.6,-1.4,-1.2,-1,-0.8,-0.6,-0.4,-0.2,0,
+                0.2,0.4,0.6,0.8,1,1.2,1.4,1.6,1.8,2]
+          y1 = [4,3.24,2.56,1.96,1.44,1,0.64,0.36,0.16,0.04,0,
+                0.04,0.16,0.36,0.64,1,1.44,1.96,2.56,3.24,4]
+
+          x2 = [-1.50,1.20,-0.96,0.77,-0.61,0.49,-0.39,0.31,-0.25,0.20]
+          y2 = [2.250,1.440,0.922,0.590,0.377,0.242,0.155,0.099,0.063,0.041]
+
+          FIG1 = document.getElementById('img-gradient-descent');
+    			Plotly.newPlot(FIG1,
+                         [{x: x1, y: y1,
+                           name: 'function'},
+                          {x: x2, y: y2,
+                           name: 'solution trajectory'}],
+                          {margin: { t:50, b:50, l:50, r:10},
+                           title: 'Gradient descent on simple quadratic function',
+                           xaxis: {'title' : 'x', 'range': [-2,2]},
+                           yaxis: {'title' : 'f(x)', 'range': [-0.001, 2.4]},
+                           font: {'size':10}},
+                        );
+
+		  </script>
+
+    </body>
+</html>
