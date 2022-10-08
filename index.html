@@ -75,6 +75,15 @@
 
 		<script>
 			function showMenuSubcategory(refID, longHeight) {
+				if (refID != 'siteNavSubDesign') {
+					document.getElementById('siteNavSubDesign').style.height = '26px';
+				}
+				if (refID != 'siteNavSubMarkets') {
+					document.getElementById('siteNavSubMarkets').style.height = '26px';
+				}
+				if (refID != 'siteNavSubAlgorithms') {
+					document.getElementById('siteNavSubAlgorithms').style.height = '26px';
+				}
 				if (document.getElementById(refID).clientHeight > 26) {
 					document.getElementById(refID).style.height = '26px';
 				} else {
