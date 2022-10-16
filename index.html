@@ -47,6 +47,8 @@
 						<span class='siteNavTextSub'>Gradient descent & variants</span></a>
 					<a href='algo-gaussian-process.html' class='siteNavLink' target='notesFrame'>
 						<span class='siteNavTextSub'>Gaussian processes</span></a>
+					<a href='algo-technical-analysis.html' class='siteNavLink' target='notesFrame'>
+						<span class='siteNavTextSub'>(draft) Technical analysis</span></a>
 			    </div>
 				<div class='siteNavSub'>
 					<a href='references.html' class='siteNavLink' target='notesFrame'>
@@ -73,6 +75,15 @@
 
 		<script>
 			function showMenuSubcategory(refID, longHeight) {
+				if (refID != 'siteNavSubDesign') {
+					document.getElementById('siteNavSubDesign').style.height = '26px';
+				}
+				if (refID != 'siteNavSubMarkets') {
+					document.getElementById('siteNavSubMarkets').style.height = '26px';
+				}
+				if (refID != 'siteNavSubAlgorithms') {
+					document.getElementById('siteNavSubAlgorithms').style.height = '26px';
+				}
 				if (document.getElementById(refID).clientHeight > 26) {
 					document.getElementById(refID).style.height = '26px';
 				} else {

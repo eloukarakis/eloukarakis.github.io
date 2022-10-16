@@ -59,13 +59,21 @@ div.algorithm{
 }
 
 div.img {
-    height: 300px;
-    width: 450px;
+    height: 320px;
+    width: 480px;
     border: solid 2px;
     border-color: #72b2f2;
     border-radius: 8px;
+    background-color: white;
     margin: 10px;
     float: right;
+}
+
+iframe.img {
+    height: 100%;
+    width: 100%;
+    border: none;
+    margin: 0px;
 }
 
 br.big {
