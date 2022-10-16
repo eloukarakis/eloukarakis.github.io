@@ -4,83 +4,78 @@
     <title> About </title>
     <style>
         p.img{
-            font-size: 30px;
             font-style: italic;
             color: #d3d8e0;
-            background-color: #56637a;
-            padding-left: 40px;
-            padding-right: 40px;
+            background-color: rgba(0,0,0,0.58);
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-bottom: 10px;
             padding-top: 10px;
-            padding-bottom: 10px
         }
 
         img.show{
             width: 100%;
-            filter:grayscale(30%) blur(2px) opacity(80%);
+            object-fit: cover;
+            height: 320px;
+            filter:grayscale(0%) blur(1px) opacity(90%);
         }
 
-        div.imgHolder{
+        div.pic{
             position: relative;
-            width: 100%;
-            height: 600px;
-            background-attachment: fixed;
-            background-position: left top;
-            background-repeat: no-repeat;
-            background-size: cover;
+            overflow: hidden;
         }
-
-        div.img1{
-            background-image: url('./images/wind-farm-1.jpg');
-        }
-
-        div.img2{
-            background-image: url('./images/snowy-pole-1.jpg');
-        }
-
-        div.img3{
-            background-image: url('./images/trading-cow-1.jpg');
-        }
-
-        div.img4{
-            background-image: url('./images/power-transformer-1.jpg');
-        }
-
 
     </style>
 
     <body>
 
-        <div class="imgHolder img1">
-            <div style="position:absolute;left:10%;bottom:65%">
-                <p class="img"> Hi! </p> </div>
-            <div style="position:absolute;left:35%;bottom:15%">
-                <p class="img"> I'm an<br> energy systems<br> engineer </p> </div>
+        <div class="pic" style="width:100%; height:320px; float:left;">
+            <img class="show" src='./images/wind-farm-1.jpg'>
+
+            <div class="txt" style="position: absolute; left:40px; top:20px; font-size:40px;">
+                <p class="img"> Hi! </p>
+            </div>
+            <div class="txt" style="position: absolute; right:40px; top:170px; font-size:30px">
+                <p class="img">  I'm an<br> energy systems specialist </p>
+            </div>
+
         </div>
 
-        <div class="imgHolder img2">
-            <div style="position:absolute;left:10%;bottom:65%">
-                <p class="img"> with experience <br> covering </p> </div>
-            <div style="position:absolute;left:25%;bottom:45%">
-                <p class="img"> ... from power systems<br> fundamentals </p> </div>
-            <div style="position:absolute;left:45%;bottom:25%">
-                <p class="img"> ... to energy <br> markets </p> </div>
-            <div style="position:absolute;left:55%;bottom:5%">
-                <p class="img"> ... and applied<br> OR & ML </p> </div>
+        <div class="pic" style="width:100%; height:320px; float:left;">
+            <img class="show" src='./images/snowy-pole-1.jpg'>
+
+            <div class="txt" style="position: absolute; left:15px; top:0px; font-size:18px;">
+                <p class="img"> experienced in </p>
+            </div>
+            <div class="txt" style="position: absolute; left:30px; top:60px; font-size:28px;">
+                <p class="img">  power system fundamentals </p>
+            </div>
+            <div class="txt" style="position: absolute; left:25px; top:120px; font-size:28px;">
+                <p class="img">  energy markets </p>
+            </div>
+            <div class="txt" style="position: absolute; left:35px; top:180px; font-size:28px;">
+                <p class="img">  applied operations research <br> & machine learning </p>
+            </div>
+
         </div>
 
-        <div class="imgHolder img3">
-            <div style="position:absolute;left:25%;bottom:45%">
-                <p class="img"> ... and an interest<br> in economics<br>
-                    and markets </p> </div>
-        </div>
+        <div class="pic" style="width:100%; height:320px; float:left;">
+            <img class="show" src='./images/trading-cow-1.jpg'>
 
-        <div class="imgHolder img4">
-            <div style="position:absolute;left:10%;bottom:65%">
-                <p class="img"> Need help with a project? </p> </div>
-            <div style="position:absolute;left:25%;bottom:25%">
-                <p class="img">  Contact me! </div>
-        </div>
+            <div class="txt" style="position: absolute; right:15px; top:0px; font-size:18px;">
+                <p class="img"> and a keen interest in </p>
+            </div>
+            <div class="txt" style="position: absolute; right:30px; top:60px; font-size:24px;">
+                <p class="img">  economics </p>
+            </div>
+            <div class="txt" style="position: absolute; right:25px; top:120px; font-size:24px;">
+                <p class="img">  trading </p>
+            </div>
+            <div class="txt" style="position: absolute; right:35px; top:180px; font-size:24px;">
+                <p class="img">  energy policy </p>
+            </div>
 
+        </div>
 
     </body>
 </html>

@@ -86,7 +86,9 @@
       </div>
 
       <div class='note'>
-          <div class='img' id='img-weather-probability'> </div>
+          <div class='img'>
+              <iframe class='img' src="figures/design_circuitRating_excursionProbability.html"></iframe>
+          </div>
 
           <h2> Weather conditions </h2>
           <p>
@@ -129,23 +131,6 @@
           between single and multi-circuit ratings in P-27.
           </p>
       </div>
-
-	    <script>
-
-          FIG1 = document.getElementById('img-weather-probability');
-    			Plotly.newPlot(FIG1,
-                         [{x: [0, 0.9, 0.912, 0.93, 0.98, 1, 1.018, 1.03, 1.063, 1.085,
-                               1.135, 1.17, 1.245, 1.315, 1.382, 1.475, 1.64, 1.86, 1000],
-                           y: [0.00001, 0.00001, 0.001, 0.01, 0.1, 0.2, 0.3, 0.4, 0.7, 1,
-                               2, 3, 6, 10, 14, 20, 30, 40, 40] }],
-                          {margin: { t:50, b:50, l:50, r:10},
-                           title: 'Rating excursion probability',
-                           xaxis: {'title' : 'Ct', 'range': [0.6, 2]},
-                           yaxis: {'title' : 'excursion probability [%]', 'range': [0, 38]},
-                           font: {'size':10}},
-                        );
-
-		  </script>
 
     </body>
 </html>
