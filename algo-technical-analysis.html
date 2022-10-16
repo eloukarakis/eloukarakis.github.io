@@ -4,82 +4,100 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <title> Gradient descent </title>
+    <title> Technical analysis </title>
 
     <body>
 
       	<div class='note'>
           <h1> Background info </h1>
           <p> There are three main approaches one could adopt to forecast prices and
-          subsequently trade in the market.<br>
-          The first is fundamental analysis, where one attempts to identify the
-          intrinsic value of the investment through analysis of past company
-          financials (or commodity demand).<br>
-          The second is technical analysis, where one attempts to predict
-          market dynamics based on past historic price patterns. Alternatively,
-          through quantitative analysis - by applying more rigorous mathematical
-          analysis on historical data, including assessing technical analysis
-          approaches and their performance - it is possible to come up with
-          trading methods with a certain degree of success.
-          Finally, one may follow publicly available information and news to
-          form an idea about how the market is expected to move.<br> </p>
+              subsequently trade in the market.<br>
+              The first is fundamental analysis, where one attempts to identify the
+              intrinsic value of the investment through analysis of past company
+              financials (or commodity demand).<br>
+              The second is technical analysis, where one attempts to predict
+              market dynamics based on past historic price patterns. Alternatively,
+              through quantitative analysis - by applying more rigorous mathematical
+              analysis on historical data, including assessing technical analysis
+              approaches and their performance - it is possible to come up with
+              trading methods with a certain degree of success.
+              Finally, one may follow publicly available information and news to
+              form an idea about how the market is expected to move.<br>
+          </p>
 
 	    </div>
 
         <div class='note'>
             <h2> Technical analysis rationale </h2>
             <p> The reasoning behind technical analysis is that there are
-            inefficiencies which do not allow the market to perfectly discount
-            available information about an asset's value. For example, there
-            might be some insider activity that could start affecting an asset's
-            price even before news break out. Furthermore, even when all news
-            become available not all market participants will act at the same
-            moment, while there might also be some momentum that results in the
-            asset's price being much lower or higher than it is actually worth.<br><br>
+                inefficiencies which do not allow the market to perfectly discount
+                available information about an asset's value. For example, there
+                might be some insider activity that could start affecting an asset's
+                price even before news break out. Furthermore, even when all news
+                become available not all market participants will act at the same
+                moment, while there might also be some momentum that results in the
+                asset's price being much lower or higher than it is actually worth.<br><br>
 
-            Technical analysis is based on the Dow theory which assumes that:<br>
-            - The averages (market trend) will eventually discount everything<br>
-            - There are three key trends in the market: a primary one which can
-            last months to years; a secondary reaction which lasts weeks to
-            months; and minor trends which last days to weeks.<br>
-            - Primary trends have three phases: accumulation where informed
-            participants buy more of the asset while others being bearish sell;
-            trending where prices start to increase as confidence builds (or the
-            opposite); distribution where informed participants sell off while
-            others continue to buy (or the opposite) following the trend.<br>
-            - A trend will persist until there is evidence to the contrary.<br>
-            - Averages from different indices must give similar indications (a
-            single indicator is not enough).<br>
-            - Volumes must confirm the trend - i.e. they should be expanding in
-            the direction of the existing trend.<br>
+                Technical analysis is based on the Dow theory which assumes that:<br>
+                - The averages (market trend) will eventually discount everything<br>
+                - There are three key trends in the market: a primary one which can
+                last months to years; a secondary reaction which lasts weeks to
+                months; and minor trends which last days to weeks.<br>
+                - Primary trends have three phases: accumulation where informed
+                participants buy more of the asset while others being bearish sell;
+                trending where prices start to increase as confidence builds (or the
+                opposite); distribution where informed participants sell off while
+                others continue to buy (or the opposite) following the trend.<br>
+                - A trend will persist until there is evidence to the contrary.<br>
+                - Averages from different indices must give similar indications (a
+                single indicator is not enough).<br>
+                - Volumes must confirm the trend - i.e. they should be expanding in
+                the direction of the existing trend.<br>
+            </p>
         </div>
 
+        <div class='note'>
+            <div class='img' id='img-moving-averages'>
+                <iframe class='img' src="figures/technicalAnalysis_movingAverages_example1.html"></iframe>
+            </div>
 
+            <h2> Moving averages </h2>
+            <p> First and foremost moving averages may be used as a price filter
+                (filtering out short term volatility) that gives a clearer
+                indication of price activity. The key relevant parameters are:<br>
+                - length: shorter lengths will be more volatile and indicative
+                of shorter term trends. <br>
+                - calculation method: this may be as simple as averaging values
+                equally weighted or more complicated, e.g. using an exponential
+                moving average, or different weights when averaging
+                (e.g. based on volumes). <br>
+                - time displacement: the moving average may be displaced backwards
+                or forwards to change the way it aligns with the data; this can
+                affect how reliably it can be used as a support/resistance line.<br>
+                - degree of smoothing: the moving average time-series could be
+                averaged a second time to further remove volatility. <br><br>
 
-	    <script>
+                A moving average if appropriately tuned may serve as a
+                support/resistance level, e.g. the 26 day average on the figure.
+                The points where it crosses the prices may be considered
+                as entry/exit points.<br>
+                Alternatively, a point where a short term moving average crosses above
+                a long term moving average may be considered as a reasonable
+                entry (buy) point. The opposite applies for exit (sell) points.
+                Commonly used values (apart from the 12/26 day shown on the
+                example) are 50 and 100 day moving averages.<br>
+                Taking the difference between the 12 and 26 day variables,
+                effectively removes the underlying trend and results to an
+                oscillator - negative on downward trends and positive on upward
+                trends. This particular oscillator is named MACD (Moving
+                Average Convergence Divergence) indicator. Taking the moving
+                average of the oscillator gives a signal line which indicates
+                entry and exit points when it crosses the MACD line. Note that
+                these points come earlier than the ones indicated by the
+                crossing of the averages.<br>
 
-          x1 = [-2,-1.8,-1.6,-1.4,-1.2,-1,-0.8,-0.6,-0.4,-0.2,0,
-                0.2,0.4,0.6,0.8,1,1.2,1.4,1.6,1.8,2]
-          y1 = [4,3.24,2.56,1.96,1.44,1,0.64,0.36,0.16,0.04,0,
-                0.04,0.16,0.36,0.64,1,1.44,1.96,2.56,3.24,4]
-
-          x2 = [-1.50,1.20,-0.96,0.77,-0.61,0.49,-0.39,0.31,-0.25,0.20]
-          y2 = [2.250,1.440,0.922,0.590,0.377,0.242,0.155,0.099,0.063,0.041]
-
-          FIG1 = document.getElementById('img-gradient-descent');
-    			Plotly.newPlot(FIG1,
-                         [{x: x1, y: y1,
-                           name: 'function'},
-                          {x: x2, y: y2,
-                           name: 'solution trajectory'}],
-                          {margin: { t:50, b:50, l:50, r:10},
-                           title: 'Gradient descent on simple quadratic function',
-                           xaxis: {'title' : 'x', 'range': [-2,2]},
-                           yaxis: {'title' : 'f(x)', 'range': [-0.001, 2.4]},
-                           font: {'size':10}},
-                        );
-
-		  </script>
+            </p>
+        </div>
 
     </body>
 </html>

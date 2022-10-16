@@ -113,29 +113,29 @@
 	    </div>
 
 		<script>
-        function figure_typical_response(allRows) {
-            var x = [], y = []
-            for (var i=0; i<allRows.length; i++) {
-                    row = allRows[i];
-                    x.push( parseFloat(row['t']) );
-                    y.push( parseFloat(row['f']) );
+            function figure_typical_response(allRows) {
+                var x = [], y = []
+                for (var i=0; i<allRows.length; i++) {
+                        row = allRows[i];
+                        x.push( parseFloat(row['t']) );
+                        y.push( parseFloat(row['f']) );
+                    }
+
+                FIG1 = document.getElementById('img-typical-response');
+        		Plotly.newPlot( FIG1,
+                            [{x: x, y: y }],
+                                    {
+                                        margin: { t:50, b:50, l:50, r:10},
+                                        title: 'Typical frequency response',
+                                        xaxis: {'title' : 'time [sec]'},
+                                        yaxis: {'title' : 'frequency [Hz]'},
+                                        font: {'size':10}
+                                    },
+                                );
                 }
 
-            FIG1 = document.getElementById('img-typical-response');
-    		Plotly.newPlot( FIG1,
-                        [{x: x, y: y }],
-                                {
-                                    margin: { t:50, b:50, l:50, r:10},
-                                    title: 'Typical frequency response',
-                                    xaxis: {'title' : 'time [sec]'},
-                                    yaxis: {'title' : 'frequency [Hz]'},
-                                    font: {'size':10}
-                                },
-                            );
-            }
-
-        Plotly.d3.csv('https://eloukarakis.github.io/data/design-typical-frequency-response.csv',
-                       function(data){ figure_typical_response(data) } );
+                Plotly.d3.csv('https://eloukarakis.github.io/data/design-typical-frequency-response.csv',
+                              function(data){ figure_typical_response(data) } );
 
 		</script>
 
