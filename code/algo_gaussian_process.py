@@ -1,14 +1,12 @@
-
 import numpy as np
 import matplotlib.pyplot as plt
+import plotly.graph_objects as gop
 import gpflow
 import tensorflow as tf
 import pandas as pd
 
 def test_basic():
     pass
-
-
 
 def generate_sample_data(x, mode):
     if mode==1:
@@ -19,7 +17,7 @@ def generate_sample_data(x, mode):
 
 #------------------------------------------------------------------------------
     
-def basic_fit():
+def basic_fit(folder):
     
     K = gpflow.kernels.SquaredExponential(lengthscales = 0.3,
                                           variance     = 1)
@@ -37,7 +35,7 @@ def basic_fit():
     opt = gpflow.optimizers.Scipy()
     opt.minimize(m.training_loss, m.trainable_variables, options=dict(maxiter=100))
 
-    Xt = np.arange(-1.5,1.5,0.04).reshape(-1,1)
+    Xt = np.arange(-1.5,1.5,0.02).reshape(-1,1)
     #Xt = np.arange(0,50,0.01).reshape(-1,1)
     
     Yt, Yv = m.predict_f(Xt)
@@ -53,15 +51,62 @@ def basic_fit():
     gpflow.utilities.print_summary(m)
     
     
-    pd.DataFrame(data = {'x':Xt.flatten(),
+    set1 = pd.DataFrame(data = {'x':Xt.flatten(),
                                 'med': Yt,
                                 'varH': Yt-Yv*1.96,
-                                'varL': Yt+Yv*1.96
-                                }).to_csv('C:/Users/elouk/OneDrive/eloukarakis.github.io/data/gaussian_process_1a.csv')
+                                'varL': Yt+Yv*1.96})
     
-    pd.DataFrame(data = {'x':X,
-                                'y': Y,
-                                }).to_csv('C:/Users/elouk/OneDrive/eloukarakis.github.io/data/gaussian_process_1b.csv')
+    set2 = pd.DataFrame(data = {'x':X, 'y': Y})
+            
+    figData = [
+           {'type' : 'scatter',
+            'x'    : set1['x'],
+            'y'    : set1['varL'],
+            'line' : {'color' : 'lightgreen'},
+            'name' : 'gaussian (low)'},
+           {'type' : 'scatter',
+            'x'    : set1['x'],
+            'y'    : set1['varH'],
+            'line' : {'color' : 'lightgreen'},
+            'name' : 'gaussian (high)',
+            'fill' : 'tonexty'},
+           {'type' : 'scatter',
+            'x'    : set1['x'],
+            'y'    : set1['med'],
+            'line' : {'color' : 'blue'},
+            'name' : 'gaussian (average)'},
+           {'type' : 'scatter',
+            'x'    : set2['x'],
+            'y'    : set2['y'],
+            'line' : {'color' : 'black'},
+            'name' : 'sample data',
+            'mode' : 'markers'},
+           
+           ]
+
+    # set hover label length
+    for i in range(len(figData)):
+      figData[i]['hoverlabel'] = {'namelength' : -1}     
+    
+    figLayout = {'width'     : 450,
+                 'height'    : 300,
+                 'font'      : {'size' : 10},
+                 'hovermode' : 'x',
+                 'margin'    : {'t':20,'b':20,'l':40,'r':0},
+                 'showlegend': True,
+                 'xaxis'     : {'title': 'x', 'range': [-1.5, 1.5]},
+                 'yaxis'     : {'title' : 'f(x)', 'range': [-2.5, 2]},
+                 'title'     : 'Gaussian process example'
+                }
+    
+    fig = gop.Figure({'data': figData,
+                      'layout': figLayout
+                      })
+    
+    fig.write_html(folder + 'figures/algo_gaussianProcess_base.html',
+                   include_plotlyjs='cdn',
+                   full_html=False,
+                   auto_open=True)
     
     
 def stepTwo():
