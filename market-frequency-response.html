@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" type="text/css" href="style-note.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title> Frequency response markets </title>
+
+    <body>
+
+      	<div class='note'>
+          <h1> Procuring response </h1>
+          <p> Depending on system conditions the system operator would require
+              varying amounts of spinning / operating reserve (i.e. generation
+              that automatically adjusts output based on frequency). The response
+              requirement is likely to depend on demand levels, large power station
+              availability shortfalls, the greater of the largest secured loss of
+              generation or loss of import from interconnections.<br><br>
+              Market participants may be able to fulfill these requirements, but
+              their speed of response is dependent on their equipment. A battery
+              (electrochemical reactions and associated power electronics are
+              fast) can respond much faster than a conventional generator (burning
+              more fuel and the electromechanical parts of the controls can be
+              slow); an industrial load operated via a switch cannot follow
+              frequency continuously (can just switch off when frequency drops
+              below a predefined value).<br><br>
+              To facilitate participation while clearly identifying resource
+              capability a number of frequency response markets/products with
+              clearly specified characteristics (e.g. response times, metering
+              requirements) are made available. While the underlying principles
+              are always the same, these products differ from country to country.
+              Furthermore clearing  and frequency of the market may also vary.
+          </p>
+          </div>
+
+	    </div>
+
+        <div class='note'>
+            <h2> United Kingdom (National Grid) </h2>
+            <p> The total requirement up to 2020 has been procured through two
+                separate mechanisms: Mandatory Frequency Response (MFR) and
+                Firm Frequency Response (FFR). The frequency response markets
+                trade in 4 products:<br>
+                - Primary dynamic response (droop control, provided within 10seconds for 20sec);<br>
+                - Secondary static response (switched action, provided within 30sec for 30min);<br>
+                - Secondary dynamic response (droop control, provided within 30sec for 30min);<br>
+                - High dynamic response (droop control, provided within 10sec indefinitely).<br>
+
+                For FFR, these products are bought through competitive pay-as-bid tenders.
+                FFR bids are in combinations of EFA blocks (4 hours time-blocks, 6 per day)
+                with an availability fee (£/MWh). The most cost effective bids
+                and alternative actions (including response available through MFR)
+                combination that could cover the response requirement is procured.<br><br>
+
+                For MFR, generators (depending on size) may be obliged to have the
+                capability to provide the service. Generators submit prices each month
+                for availability (£/h) and are dispatched daily as the system state
+                requires. Generators receive a holding payment (£/h) based on
+                their submitted prices for the hours instructed to provide the service,
+                as well as a response energy payment (£/MWh) which is linked to
+                the Balancing Market clearing price.<br><br>
+
+                From 2021 onwards there is an ongoing effort to move all markets
+                closer to real-time and further standardise products in to three
+                core categories:<br>
+                - Dynamic regulation<br>
+                - Dynamic moderation<br>
+                - Dynamic containment<br>
+                These are all droop control based with varying curves. Currently
+                these are paid-as-cleared markets, run a day-ahead. Service
+                providers are paid an availability fee (£/MWh).<br><br>
+
+                Technical operational limitations have to be accounted for by
+                the service providers - e.g. providing response through a storage
+                device may lead to the available energy being depleted.
+                In that case the service provider may withhold a fraction of the
+                battery capacity to allow some (limited) state-of-charge management.
+                Alternatively, the battery may be used as part of a wider portfolio,
+                with other assets substituting the battery if there is insufficient
+                state-of-charge to provide the service.
+            </p>
+        </div>
+
+        <div class='note'>
+            <h2> Australia (AEMO) </h2>
+            <p> Procurement Mechanisms AEMO procures the required services
+                through their dispatch mechanism, in 5-min intervals. The response
+                or FCAS (Frequency Response Ancillary Services) market trades
+                in the following 8 products:<br>
+                - Regulation Raise/Lower (real-time frequency control dispatched
+                at the instruction of the system operator)<br>
+                - Fast Raise/Lower (response in 6 seconds based on droop or
+                static controls, 60 seconds duration)<br>
+                - Slow Raise/Lower (response in 60 seconds, 5 minutes duration)<br>
+                - Delayed Raise/Lower (response in 5 minutes, 10 minutes duration)<br>
+
+                Participants submit an availability price ($/MWh). The FCAS
+                market is cooptimised with the spot (balancing) market and is
+                paid-as-cleared.<br>
+
+                AEMO has been critised ...
+
+        </div>
+
+
+    </body>
+</html>
