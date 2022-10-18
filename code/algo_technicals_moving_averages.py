@@ -20,7 +20,7 @@ def go(folder):
     data = data.dropna()
     
     figData = [  
-           {'type'  : 'ohlc',
+           {'type'  : 'candlestick',
             'open'  : data['open'].values,
             'close' : data['close'].values,
             'high'  : data['high'].values,
