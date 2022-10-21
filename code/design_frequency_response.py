@@ -27,7 +27,7 @@ def go(folder):
                  'height'    : 300,
                  'font'      : {'size' : 10},
                  'hovermode' : 'x',
-                 'margin'    : {'t':20,'b':20,'l':40,'r':0},
+                 'margin'    : {'t':26,'b':20,'l':40,'r':0},
                  'showlegend': False,
                  'xaxis'     : {'title': 'time [sec]'},
                  'yaxis'     : {'title' : 'frequency [Hz]'},
