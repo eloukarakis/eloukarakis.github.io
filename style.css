@@ -77,6 +77,30 @@ a.siteNavLink {
 	margin: 2px;
 	transition-duration: 0.6s
 }
+
+a.siteNavSeparator {
+	position: relative;
+	color: rgb(44, 73, 120);
+	display: block;
+	border-radius: 4px;
+	padding: 0px;
+	height: 18px;
+	margin: 2px;
+	transition-duration: 0.6s
+}
+
+span.siteNavSeparatorText {
+		display: inline-block;
+		font-size: 12px;
+		color: #9dadc7;
+		height: 20px;
+		padding-left: 5px;
+		position: absolute;
+		top: 50%;
+		margin-top: -5px;
+		margin-left: 10px;
+}
+
 span.siteNavText {
 	display: inline-block;
 	font-size: 18px;
@@ -87,6 +111,7 @@ span.siteNavText {
 	margin-top: -10px;
 	margin-left: 22px;
 }
+
 span.siteNavTextSub {
 	display: inline-block;
 	font-size: 14px;
@@ -97,6 +122,7 @@ span.siteNavTextSub {
 	margin-top: -9px;
 	margin-left: 30px;
 }
+
 img.siteNavIcon {
 	display: inline-block;
 	width: 20px;
