@@ -1,7 +1,6 @@
 import pandas as pd
 import plotly.graph_objects as gop
 
-
 def moving_average(folder):
     
     data = pd.read_csv(folder + 'code/data/algo_timeSeriesAnalysis.csv',
@@ -9,12 +8,15 @@ def moving_average(folder):
                        parse_dates = [0],
                        date_parser = lambda t: pd.to_datetime(t, unit='s'))
     
-    data['mean'] = data['MID_GBPMWH'].mean()
+    data['mean'] = [data.iloc[:(i-1)]['MID_GBPMWH'].mean() for i in range(data.shape[0])]
     data['rolling8'] = data['MID_GBPMWH'].rolling(8).mean()
     data['rolling360'] = data['MID_GBPMWH'].rolling(360).mean()
     
+    xf_expsmooth = forecast_exponential_smoothing(data)
     
-    data = data.iloc[-90*48:]
+    keep = 30*48
+    data = data.iloc[-keep:]
+    xf_expsmooth = xf_expsmooth[-keep:]
     
     figData = [  
            {'type'  : 'scatter',
@@ -33,8 +35,13 @@ def moving_average(folder):
             'name' : 'rolling (360)'},
            {'type' : 'scatter',
             'x'    : data.index,
+            'y'    : xf_expsmooth,
+            'line' : {'color': 'darkgreen'},
+            'name' : 'exponential smoothing'},
+           {'type' : 'scatter',
+            'x'    : data.index,
             'y'    : data['mean'].values,
-            'line' : {'color': 'green'},
+            'line' : {'color': 'black'},
             'name' : 'average'},
            
            ]
@@ -59,4 +66,15 @@ def moving_average(folder):
                    include_plotlyjs='cdn',
                    full_html=False,
                    auto_open=True)
+    
+    
+def forecast_exponential_smoothing(data):
+    
+    from statsmodels.tsa.holtwinters import SimpleExpSmoothing
+
+    m     = SimpleExpSmoothing(data['MID_GBPMWH'].values).fit(smoothing_level=0.4, 
+                                                              optimized=False)
+    xf    = m.fittedvalues
+    
+    return xf
     
