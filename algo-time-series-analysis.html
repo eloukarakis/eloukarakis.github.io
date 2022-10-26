@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" type="text/css" href="style-note.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title> Time-series analysis </title>
+
+    <body>
+
+      	<div class='note'>
+          <h1> What's this about? </h1>
+          <p> Excluding more complicated machine-learning algorithms, there's a
+              whole bunch of more basic, statistical approaches to forecasting.
+              Many of those involve using just the time-series itself rather than
+              a large number of relevant features, and a relatively low
+              computational cost.
+          </p>
+          </div>
+
+	    </div>
+
+        <div class='note'>
+            <div class='img'>
+                <iframe class='img' src="figures/algo_timeSeriesAnalysis_movingAverages.html"></iframe>
+            </div>
+
+            <h2> (Moving) averages & exponential smoothing </h2>
+            <p> The mean value of a time-series can often provide a very basic
+                forecast, at least as long as the data is stationary and
+                variance remains constant. The next best thing however when the
+                time-series contains an underlying trend/seasonality can be a
+                moving average:
+                \[ f_{t+1}=1/k\cdot\Sigma_{t-k+1}^{t}y_t \]
+                Where \(f_t\) is the forecast value and \(y_t\) the actual.
+                A moving average will always tend to lag the time-series.<br>
+                While as a forecast this might not be necessarily be the best
+                that can be, it can capture trends - useful for
+                building decomposition models.<br><br>
+
+                More complex averaging methods are possible by adding weights
+                to each value used. If these weights were set to increase
+                exponentially towards the most recent value, then we have the
+                exponential smoothing method. Instead of a more complex averaging
+                equation we simply have (it is equivalent):
+                \[ f_{t+1}=f_{t} + \alpha \cdot (y_t - f_t) \]
+                Where \(\alpha\) is a parameter. Effectively each future forecast
+                is adjusted by the latest known error.
+            </p>
+        </div>
+
+
+
+    </body>
+</html>
