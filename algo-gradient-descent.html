@@ -11,15 +11,16 @@
       	<div class='note'>
           <h1> Background info </h1>
           <p> Let's assume we want to solve \(min_xf(x)\),
-          where x is a vector. One generic approach for solving this problem
-          is to iteratively solve instead \(min_{a>0}f(x_k+a\cdot p_k)\) - starting from a
-          point \(x_k\), we first try to find a direction \(p_k\) along which the value
-          of the function decreases and then a value \(a>0\) that indicates how
-          far along we should move along that direction.
-          Rather than computing \(a, p_k\) exactly, we are instead looking for fast approximate methods
-          which would (hopefully) allow for fast convergence to the solution.
-          This is the so called line-search approach - we are after all searching for a
-          step size \(a\) along the line defined by \(p_k\).</p>
+              where x is a vector. One generic approach for solving this problem
+              is to iteratively solve instead \(min_{a>0}f(x_k+a\cdot p_k)\) - starting from a
+              point \(x_k\), we first try to find a direction \(p_k\) along which the value
+              of the function decreases and then a value \(a>0\) that indicates how
+              far along we should move along that direction.
+              Rather than computing \(a, p_k\) exactly, we are instead looking for fast approximate methods
+              which would (hopefully) allow for fast convergence to the solution.
+              This is the so called line-search approach - we are after all searching for a
+              step size \(a\) along the line defined by \(p_k\).
+          </p>
           <div class='mark'>
             Gradient (or steepest) descent can be thought of as the simplest
             algorithm based on the line-search concept (step-size \(a\) fixed and \(p_k\) set
@@ -36,7 +37,8 @@
 
             <h2> Gradient descent </h2>
             <p> Assuming that we can calculate a derivative for the function, it would
-            be reasonable to move along exactly that direction: </p>
+                be reasonable to move along exactly that direction:
+            </p>
             <div class='algorithm'>
                 GRADIENT DESCENT<br><br>
                 (0) Set \(a>0\) <br>
@@ -44,13 +46,14 @@
                 (2) If \( |x_{k+1} - x_k|<\epsilon \) stop <br>
             </div>
             <p> Iterations are stopped as soon as the derivative is below a certain
-            tolerance.<br><br>
+                tolerance.<br><br>
 
-            The step size parameter may simply be set to a predetermined value. Too
-            high values can lead to instability (algorithm oscillating between points
-            or simply diverging), too low values can lead to very slow convergence.<br>
-            A work-around to this is to introduce an inner iteration loop in
-            the algorithm: </p>
+                The step size parameter may simply be set to a predetermined value. Too
+                high values can lead to instability (algorithm oscillating between points
+                or simply diverging), too low values can lead to very slow convergence.<br>
+                A work-around to this is to introduce an inner iteration loop in
+                the algorithm:
+            </p>
             <div class='algorithm'>
                 BACKTRACKING LINE-SEARCH<br><br>
                 (0) Set \( a = a_0, \rho \in (0,1), c \in (0,1) \)<br>
@@ -60,39 +63,41 @@
                 (2b) ... else stop and set \( a_k = a \)
             </div>
             <p> For non-convex functions the algorithm is likely to converge to a
-            local minimum rather than the global one.<br>
+                local minimum rather than the global one.<br>
 
-            For non-smooth functions, or for problems where the function is not
-            kwown (rather a set of discrete points / observations is provided) a
-            closed-form derivative would not be available and an approximation
-            would be required.<br></p>
+                For non-smooth functions, or for problems where the function is not
+                kwown (rather a set of discrete points / observations is provided) a
+                closed-form derivative would not be available and an approximation
+                would be required.<br>
+            </p>
         </div>
 
         <div class='note'>
             <h2> Variants </h2>
             <p> One possible use of gradient descent is fitting a function
-            (e.g. linear) over a dataset. In this case we are typically trying to
-            minimise the errors between the function and points in the dataset.
-            The partial derivatives of the parameters we are fitting are
-            dependent on the errors of all points in the dataset and we could
-            do the calculations accordingly. This approach where we use the
-            complete dataset at each iteration is <b>batch gradient
-            descent</b>.<br><br>
+                (e.g. linear) over a dataset. In this case we are typically trying to
+                minimise the errors between the function and points in the dataset.
+                The partial derivatives of the parameters we are fitting are
+                dependent on the errors of all points in the dataset and we could
+                do the calculations accordingly. This approach where we use the
+                complete dataset at each iteration is <b>batch gradient
+                descent</b>.<br><br>
 
-            In cases where the dataset is significantly large however, such
-            computations might take significant time. An alternative would be
-            to pick a single point int the data-set at random and carry the
-            iteration based only on that - consequently derivative calculations
-            can be  much faster. This approach is called <b>stochastic gradient
-            descent</b>.<br><br>
+                In cases where the dataset is significantly large however, such
+                computations might take significant time. An alternative would be
+                to pick a single point int the data-set at random and carry the
+                iteration based only on that - consequently derivative calculations
+                can be  much faster. This approach is called <b>stochastic gradient
+                descent</b>.<br><br>
 
-            Stochastic gradient descent is unlikely to converge with the same
-            accuracy as batch gradient descent to the optimal parameters and
-            the convergence will not be as smooth, but it can be much
-            faster for large data-sets. A compromise between the two approaches
-            can be the so-called <b>mini-batch gradient descent</b> where a
-            randomly selected subset of the available data is used at each
-            iteration.<br></p>
+                Stochastic gradient descent is unlikely to converge with the same
+                accuracy as batch gradient descent to the optimal parameters and
+                the convergence will not be as smooth, but it can be much
+                faster for large data-sets. A compromise between the two approaches
+                can be the so-called <b>mini-batch gradient descent</b> where a
+                randomly selected subset of the available data is used at each
+                iteration.<br>
+            </p>
         </div>
 
     </body>
