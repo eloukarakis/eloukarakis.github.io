@@ -150,3 +150,83 @@ def trends(folder):
                    auto_open=True)
     
     return data
+
+
+def volumes(folder):
+    """
+    Plots OHLC data and various trend curves examples.
+    
+    IN: folder (str): folder where relevant data are located
+    """
+    
+    data = pd.read_parquet(folder + 'code/data/technicals_moving_averages_example1.parquet')
+    
+    data = data.iloc[-900:]
+    data['close-1'] = data['close'].shift(1)
+    data['OBV'] = ((data['close'] - data['close-1']).apply(lambda x: 1 if x>0 else -1) * data['volume']).cumsum()
+    data['ADL'] = ((2*data['close']-data['low']-data['high'])/(data['high']-data['low']) * data['volume']).cumsum()
+    data['volume-avg'] = data['volume'].rolling(90).mean()
+    
+    figData = [  
+           {'type'  : 'candlestick',
+            'open'  : data['open'].values,
+            'close' : data['close'].values,
+            'high'  : data['high'].values,
+            'low'   : data['low'].values,
+            'name'  : 'OHLC data'},
+           {'type' : 'bar',
+            'y'    : data['volume'].values,
+            'marker' : {'color':'black'},
+            'name' : 'volumes',
+            'yaxis': 'y3'},
+           {'type' : 'scatter',
+            'y' : data['volume-avg'].values,
+            'line' : {'color' : 'blue'},
+            'name' : 'volume MA',
+            'yaxis': 'y3'},
+           {'type' : 'scatter',
+            'y' : data['OBV'],
+            'line' : {'color' : 'green'},
+            'name' : 'OBV',
+            'yaxis': 'y2'},
+           {'type' : 'scatter',
+            'y'    : data['ADL'].values,
+            'line' : {'color':'orange'},
+            'name' : 'ADL',
+            'yaxis': 'y2'},
+           ]
+
+    # set hover label length
+    for i in range(len(figData)):
+      figData[i]['hoverlabel'] = {'namelength' : -1}     
+    
+    figLayout = {'width'     : 450,
+                 'height'    : 300,
+                 'font'      : {'size' : 10},
+                 'hovermode' : 'x',
+                 'margin'    : {'t':26,'b':20,'l':0,'r':0},
+                 'showlegend': True,
+                 'xaxis'     : {'rangeslider' : {'visible' : False},
+                                'anchor': 'y2'},
+                 'yaxis'     : {'domain'  : [0.6, 1],
+                                'type'    : 'linear',
+                                'title'   : 'price',
+                                },
+                 'yaxis2'    : {'domain' : [0, 0.27],
+                                'title' : ''},
+                 'yaxis3'    : {'domain' : [0.30, 0.57]},
+                 
+                 'title'     : 'Volume indicators'
+                }
+    
+    
+    fig = gop.Figure({'data': figData,
+                      'layout': figLayout
+                      })
+    
+    fig.write_html(folder + 'figures/algo_technicalAnalysis_volumes.html',
+                   include_plotlyjs='cdn',
+                   full_html=False,
+                   auto_open=True)
+    
+    return data
