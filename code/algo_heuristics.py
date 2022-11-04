@@ -12,6 +12,11 @@ def test(folder):
                                     'y': [-12, 12, 20]
                                 })
     
+    results2 = random_search(func = obj_func,
+                            params = {'x': [-12, 12],
+                                      'y': [-12, 12]
+                                   })
+    
     figData = [
            {'type' : 'contour',
             'x'    : results['x'].unique(),
@@ -24,6 +29,12 @@ def test(folder):
             'x'    : results['x'],
             'y'    : results['y'],
             'line' : {'color' : 'black'},
+            'mode' : 'markers',
+            'name' : 'grid search points'},
+           {'type' : 'scatter',
+            'x'    : results2['x'],
+            'y'    : results2['y'],
+            'line' : {'color' : 'orangered'},
             'mode' : 'markers',
             'name' : 'grid search points'}
            ]
@@ -40,7 +51,7 @@ def test(folder):
                  'showlegend': False,
                  'xaxis'     : {'title': 'x'},
                  'yaxis'     : {'title' : 'y'},
-                 'title'     : 'Grid search'
+                 'title'     : 'Grid & random search'
                 }
     
     fig = gop.Figure({'data': figData,
@@ -62,14 +73,13 @@ def obj_func(x):
          + min((x['x']+7)**2 + (x['y']+7)**2-20, 12) 
 
 
-
 def grid_search(func, params):
     """
     Performs parallelised grid search.
     
-    in: func (function) : objective function
-    in: params (dict) : set of parameter names including [min, max, number of samples]
-    out: results (dataframe) : parameters and associated objective function values
+    in: func (function): objective function
+    in: params (dict): set of parameter names including [min, max, number of samples]
+    out: results (dataframe): parameters and associated objective function values
     """
     
     # discretise space
@@ -90,4 +100,34 @@ def grid_search(func, params):
     x['val'] = [r.get() for r in results]
     
     return x
+
+
+def random_search(func, params):
+    """
+    Performs random search.
     
+    in: func (function): objective function
+    in: params (dict): set of parameter names including [min, max]
+    out: results (dataframe): parameters and associated objective function values
+    """
+    
+    rng = np.random.default_rng()
+    rng_fc = 0.95
+    rng_pm = {ip: (params[ip][1]-params[ip][0])*0.5 for ip in params}
+    xb = {ip: rng.uniform(params[ip][0], params[ip][1])  for ip in params}
+    f  = func(xb)
+    x  = [xb]
+
+    for i in range(50):
+        xc = {ip: rng.uniform(max(params[ip][0], xb[ip]-(rng_pm[ip]*rng_fc)), 
+                              min(params[ip][1], xb[ip]+(rng_pm[ip]*rng_fc))) 
+              for ip in params}
+        fn = func(xc)
+        x += [xc]
+        if fn < f:
+            xb = xc
+            rng_fc = max(rng_fc * 0.9, 0.2)        
+    
+    x = pd.DataFrame(x)
+    return x
+            

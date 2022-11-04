@@ -33,7 +33,7 @@
                 in our grid. We keep the best of those points as the optimum.<br>
                 Instead of keeping that last point we could repeat the grid
                 search at a finer granularity around it, to further refine the
-                solution.<br><br>
+                solution.<br>
             </p>
 
             <div class='mark'>
@@ -44,8 +44,19 @@
             </div>
 
             <p> Another option is random search, where points in the feasible
-                solutions space are randomly selected. With a bit of luck one
-                can get quite quickly a reasonably good solution to the problem.
+                solutions space are randomly selected.
+            </p>
+            <div class='algorithm'>
+                RANDOM SEARCH<br><br>
+                (0) Select a random point \(x_b\) in the feasible space<br>
+                (1) Generate a new sample in a region around \(x\). <br>
+                (2) If \(f(x) \le f(x_b)\) then set \(x_b=x\). <br>
+                (3) If a given number of iterations is reached stop, else go back to 1. <br>
+            </div>
+            <p> It is likely that the optimal solution will be found in much
+                fewer iterations compared to a full grid-search.
+                Depending on how the points are sampled, it is also possible
+                that the globally optimal solution won't be found.
             </p>
 
 
