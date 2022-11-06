@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" type="text/css" href="style-note.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title> Heuristic optimisation </title>
+
+    <body>
+
+      	<div class='note'>
+          <h1> Why heuristics </h1>
+          <p> Consider a strongly non-convex function with several local minima,
+              or one where calculating its derivatives is rather complicated.
+              In such cases methods that test a broad range of feasible points
+              can give better and/or faster results that a numerical optimisation
+              approach. A common use cases is fine-tuning parameters in a model,
+              either during the design of an actual physical system or for
+              hypermeter optimisation in machine-learning pipelines.
+          </p>
+
+
+	    </div>
+
+        <div class='note'>
+            <div class='img'>
+                <iframe class='img' src="figures/algo_gridsearch.html"></iframe>
+            </div>
+
+            <h2> Grid search </h2>
+            <p> This is perhaps one of the simplest possible heuristics where
+                we discretise the search space and evaluate all points defined
+                in our grid. We keep the best of those points as the optimum.<br>
+                Instead of keeping that last point we could repeat the grid
+                search at a finer granularity around it, to further refine the
+                solution.<br>
+            </p>
+
+            <div class='mark'>
+              Grid search quite often can be a rather exhaustive
+              search of the feasible solution space. Depending on the number of
+              parameters and the time it takes to evaluate one solution, its
+              application might not be possible.
+            </div>
+
+            <p> Another option is random search, where points in the feasible
+                solutions space are randomly selected.
+            </p>
+            <div class='algorithm'>
+                RANDOM SEARCH<br><br>
+                (0) Select a random point \(x_b\) in the feasible space<br>
+                (1) Generate a new sample in a region around \(x\). <br>
+                (2) If \(f(x) \le f(x_b)\) then set \(x_b=x\). <br>
+                (3) If a given number of iterations is reached stop, else go back to 1. <br>
+            </div>
+            <p> It is likely that the optimal solution will be found in much
+                fewer iterations compared to a full grid-search.
+                Depending on how the points are sampled, it is also possible
+                that the globally optimal solution won't be found.
+            </p>
+
+
+        </div>
+
+        <div class='note'>
+            <div class='img'>
+                <iframe class='img' src="figures/algo_particleSwarm.html"></iframe>
+            </div>
+
+            <h2> Particle swarm optimisation </h2>
+
+            <p> This approach is meant to imitate the movement of a swarm of
+                (living) organisms. The algorithm resembles a random search in
+                that it starts with a random set of points, but differs in that
+                it moves the particles in part randomly and in part towards
+                the best known points at the time.
+            </p>
+            <div class='algorithm'>
+                PARTICLE SWARM OPTIMISATION<br><br>
+                (0a) Select a number random points \(x\) in the feasible space
+                equal to the number of particles.<br>
+                (0b) For each point initialise the best known value, objective
+                function cost and velocity \(xp, fp, v\). <br>
+                (0c) Initialise the best known value and cost among all points
+                \(xg, fg\).<br>
+                (1) For each point generate \(r_p,r_g ~ UID(0,1)\)<br>
+                (2) For each point update its velocity vector
+                \(v_i = v_i \cdot w + \phi_p \cdot r_p \cdot (xp_i - xp) + \phi_g \cdot r_g \cdot (xg - xp)\). <br>
+                (3) Update each point to \(x_i = x_i + v_i \)<br>
+                (4) Update best known solutions \(xp, xg, fp, fg\)<br>
+                (5) If a given number of iterations is reached stop, else go back to 1. <br>
+            </div>
+
+        </div>
+
+
+
+
+    </body>
+</html>
