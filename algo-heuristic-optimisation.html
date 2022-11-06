@@ -63,11 +63,33 @@
         </div>
 
         <div class='note'>
+            <div class='img'>
+                <iframe class='img' src="figures/algo_particleSwarm.html"></iframe>
+            </div>
 
             <h2> Particle swarm optimisation </h2>
 
-            <p> ???
+            <p> This approach is meant to imitate the movement of a swarm of
+                (living) organisms. The algorithm resembles a random search in
+                that it starts with a random set of points, but differs in that
+                it moves the particles in part randomly and in part towards
+                the best known points at the time.
             </p>
+            <div class='algorithm'>
+                PARTICLE SWARM OPTIMISATION<br><br>
+                (0a) Select a number random points \(x\) in the feasible space
+                equal to the number of particles.<br>
+                (0b) For each point initialise the best known value, objective
+                function cost and velocity \(xp, fp, v\). <br>
+                (0c) Initialise the best known value and cost among all points
+                \(xg, fg\).<br>
+                (1) For each point generate \(r_p,r_g ~ UID(0,1)\)<br>
+                (2) For each point update its velocity vector
+                \(v_i = v_i \cdot w + \phi_p \cdot r_p \cdot (xp_i - xp) + \phi_g \cdot r_g \cdot (xg - xp)\). <br>
+                (3) Update each point to \(x_i = x_i + v_i \)<br>
+                (4) Update best known solutions \(xp, xg, fp, fg\)<br>
+                (5) If a given number of iterations is reached stop, else go back to 1. <br>
+            </div>
 
         </div>
 
