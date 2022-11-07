@@ -47,7 +47,6 @@ div.mark{
 }
 
 div.algorithm{
-    width: 60%;
     padding: 4px;
     margin: 4px;
     border: solid 1px;
@@ -56,6 +55,7 @@ div.algorithm{
     border-radius: 8px;
     font-size: 10px;
     color: #07ab59;
+    max-width: 150ch;
 }
 
 div.img {
