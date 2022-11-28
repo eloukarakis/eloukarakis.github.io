@@ -14,8 +14,20 @@
 	    </div>
 
         <div class='note'>
-            <h2> (Geometric) Brownian Motion </h2>
-            <p> ... <br>
+            <div class='img'>
+                <iframe class='img' src="figures/market_derivativePricing_brownianMotion.html"></iframe>
+            </div>
+
+            <h2> Brownian Motion </h2>
+            <p> Brownian motion is a random process \(\{X_t:t \ge 0\}\) with drift \(\mu\)
+                and volatility \(\sigma\) if for \(s>0\):
+                \[X_{t+s}-X_t \sim N(\mu \cdot s, \sigma^2 \cdot s)\]
+                If drift is 0, and volatility is 1 then we have a standard Brownian motion.<br>
+                Geometric Brownian motion is a random process if for 
+                \(t>0\) and \(W_t\) a standard Brownian motion: 
+                \( X_t=e^{(\mu-\sigma^2/2) \cdot t + \sigma \cdot W_t} \). Consequently:
+                \[ X_{t+s} = X_t \cdot e^{(\mu-\sigma^2/2) \cdot s + \sigma \cdot (W_{t+s} - W_t)} \]
+                
 
             </p>
         </div>
