@@ -9,36 +9,9 @@
     <body>
 
       	<div class='note'>
-          <h1> Derivatives & risk management </h1>
-          <p> Derivatives are financial products whose value depends on
-          the price of a specific asset.</p>
-	    </div>
-
-        <div class='note'>
-            <h2> Forward & futures contracts </h2>
-            <p> A forward contract gives the buyer the right (and obligation)
-                to purchase a specified volume of an asset, at a specified time
-                T and a specified price F.<br><br>
-
-                Consider the following portfolio:<br>
-                - buy a forward contract at t=0; cashflow at t=0 -f and at t=T \(S_T-F\)<br>
-                - short the asset; cashflow at t=0; \(S_0\)<br>
-                - lend the value of asset; cashflow at t=0 \(-S_0\) and at t=T \(S_0/d(0,T)\)<br>
-                Where d(0,T) is the discount factor associated with the prevailing
-                lending rate.<br>
-                The value F would in principle be set equal to \(S_T\) therefore
-                the value paid for the contract should be f=0. Consequently
-                \(F=S_0/d(0,T)\)<br><br>
-
-                Futures contracts are simply standardised contracts organised
-                through an exchange.
-
-            </p>
-        </div>
-
-        <div class='note'>
-            <h2> Types of derivatives </h2>
-            <p> There is a variety of derivatives:<br>
+            <h1> Derivatives & risk management </h1>
+            <p> Derivatives are financial products whose value depends on
+                the price of a specific asset. There is a variety of derivatives:<br>
                 - forward contracts: agreement to purchase/sell at specific
                 volume, date and price;<br>
                 - future contracts: standardised form of forward contracts,
@@ -49,6 +22,56 @@
                 a specific volume at specific date and price;<br>
                 - American put/call: right (but no obligation) to buy/sell
                 a specific volume at a specific price up to a specific date.<br>
+            </p>
+	    </div>
+
+        <div class='note'>
+            <h2> Pricing forward contracts </h2>
+            <p> It is possible to do the following:<br>
+                - buy a forward contract at t=0; this results in a cashflow at t=0: -f and at t=T: \(S_T-F\)<br>
+                - short the asset; cashflow at t=0: \(S_0\)<br>
+                - lend the value of asset; cashflow at t=0: \(-S_0\) and at t=T: \(S_0/d(0,T)\)<br>
+                Where d(0,T) is the discount factor associated with the prevailing
+                lending rate.<br>
+                Based on the no-arbitrage principle the value F would be set equal to \(S_T\) 
+                therefore the value paid for the contract should be f=0. Consequently
+                \(F=S_0/d(0,T)\)<br><br>
+            </p>
+        </div>
+
+        <div class='note'>
+            <h2> Binomial models </h2>
+            <p> ... 
+            </p>
+        </div>
+
+
+        <div class='note'>
+            <div class='img'>
+                <iframe class='img' src="figures/market_derivativePricing_brownianMotion.html"></iframe>
+            </div>
+
+            <h2> Brownian motions </h2>
+            <p> Brownian motion is a random process \(\{X_t:t \ge 0\}\) with drift \(\mu\)
+                and volatility \(\sigma\) if for \(\Delta t>0\):
+                \[X_{t+\Delta t}-X_t \sim N(\mu \cdot \Delta t, \sigma^2 \cdot \Delta t)\]
+                If drift is 0, and volatility is 1 then we have a standard Brownian motion.<br>
+                Geometric Brownian motion (GBM) is a random process if for 
+                \(t>0\) and \(W_t\) a standard Brownian motion: 
+                \( X_t=e^{(\mu-\sigma^2/2) \cdot t + \sigma \cdot W_t} \). Consequently:
+                \[ X_{t+\Delta t} = X_t \cdot e^{(\mu-\sigma^2/2) \cdot \Delta t 
+                + \sigma \cdot (W_{t + \Delta t} - W_t)} \]
+                GBM is often use to simulate stock prices. The model may be fitted to historic data
+                by observing that:
+                \[ ln(X_{t + \Delta t}) - ln(X_t) \sim N(\mu - 0.5 \cdot \sigma^2, 
+                \sigma \cdot \Delta t^{0.5}) \]
+
+            </p>
+        </div>
+
+        <div class='note'>
+            <h2> Black-Scholes model </h2>
+            <p> 
             </p>
         </div>
 

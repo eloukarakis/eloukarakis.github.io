@@ -20,14 +20,18 @@
 
             <h2> Brownian Motion </h2>
             <p> Brownian motion is a random process \(\{X_t:t \ge 0\}\) with drift \(\mu\)
-                and volatility \(\sigma\) if for \(s>0\):
-                \[X_{t+s}-X_t \sim N(\mu \cdot s, \sigma^2 \cdot s)\]
+                and volatility \(\sigma\) if for \(\Delta t>0\):
+                \[X_{t+\Delta t}-X_t \sim N(\mu \cdot \Delta t, \sigma^2 \cdot \Delta t)\]
                 If drift is 0, and volatility is 1 then we have a standard Brownian motion.<br>
-                Geometric Brownian motion is a random process if for 
+                Geometric Brownian motion (GBM) is a random process if for 
                 \(t>0\) and \(W_t\) a standard Brownian motion: 
                 \( X_t=e^{(\mu-\sigma^2/2) \cdot t + \sigma \cdot W_t} \). Consequently:
-                \[ X_{t+s} = X_t \cdot e^{(\mu-\sigma^2/2) \cdot s + \sigma \cdot (W_{t+s} - W_t)} \]
-                
+                \[ X_{t+\Delta t} = X_t \cdot e^{(\mu-\sigma^2/2) \cdot \Delta t 
+                + \sigma \cdot (W_{t + \Delta t} - W_t)} \]
+                GBM is often use to simulate stock prices. The model may be fitted to historic data
+                by observing that:
+                \[ ln(X_{t + \Delta t}) - ln(X_t) \sim N(\mu - 0.5 \cdot \sigma^2, 
+                \sigma \cdot \Delta t^{0.5}) \]
 
             </p>
         </div>
@@ -39,8 +43,8 @@
         </div>
 
         <div class='note'>
-            <h2> Black-Sholes model </h2>
-            <p> ...
+            <h2> Black-Scholes model </h2>
+            <p> 
             </p>
         </div>
         
