@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" type="text/css" href="style-note.css">
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title> Mixed integer linear programming </title>
+
+    <body>
+
+      	<div class='note'>
+          <h1> Background info </h1>
+          <p> The typical mixed integer problem may be written as follows:
+              \[min\{cx + hy\}\]
+              \[A \cdot x  + G \cdot y \le b\]
+              \[x \ge 0\]
+              \[y \ge 0\]
+              Where x is integral, while y a continuous variables vector.
+              The two most successful algorithms that may be used to solve MILPs are: 
+              a) branch-and-bound; b) cutting plane method. Both leverage the fact that we
+              can solve efficiently linear programming problems.<br> 
+          </p>
+	    </div>
+
+        <div class='note'>
+            <h2> Branch-and-bound method</h2>
+            <p> This approach involves the following steps
+            </p>
+            <div class='algorithm'>
+                BRANCH-AND-BOUND<br><br>
+                (0) Define a set \(L\) containing a single node with the LP relaxation of
+                the original MILP problem.<br>
+                (1) (node selection) Pick a node from the set \(L\) and remove it from the set.
+                If the set is empty the algorithm has converged.<br>
+                (2) (prune) Solve the associated problem. If it is infeasible go back to (1).
+                If it is MILP feasible store and the objective function is lower than the best
+                known solution, replace the later and go back to (1).<br>
+                (3) (branch) Construct at least 2 linear programs with smaller feasible regions,
+                such that the optimal (non-integer) solution to the problem is excluded, and go
+                back to step (1).
+            </div>
+
+            Key factors that affect the speed of convergence is the node selection and branching
+            processes, as well as the quality of any known solutions to the MILP.
+
+        </div>
+
+        <div class='note'>
+            <h2> Cutting plane method</h2>
+            <p>...
+            </p>
+        </div>
+
+
+        <div class='note'>
+            <h2> Formulations tricks</h2>
+            <p>
+                
+            </p>
+        </div>
+
+
+    </body>
+</html>
