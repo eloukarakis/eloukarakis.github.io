@@ -9,17 +9,24 @@ def go(folder):
     """
     
     skills = {
-        "i": {"best" : 0}, 
-        "know": {"best" : 1}, 
-        "some": {"best" : 6}, 
-        "things": {"best" : 3}
+        "coding - JavaScript": {"best": 5.5},
+        "coding - html/css": {"best": 5},
+        "coding - Python": {"best": 1},
+        
+        "cloud - Kubernetes": {"best": 7},
+        "cloud - AWS": {"best" : 4}, 
+        
+        "numerical optimisation": {"best" : 0.5},
+        
+        "power systems - planning (11-132kV)": {"best" : 1}, 
+        "power systems - network design (<=20kV)": {"best" : 2}
         }
     
     
     figData = [
            {'type': 'bar',
             'orientation': 'h',
-            'x': [2 for i in skills],
+            'x': [3 for i in skills],
             'y': [i for i  in skills],
             "base": [skills[i]["best"] for i in skills],
             'name': None,
@@ -31,7 +38,7 @@ def go(folder):
       figData[i]['hoverlabel'] = {'namelength' : -1}     
     
     figLayout = {'width'     : 450,
-                 'height'    : 300,
+                 'height'    : 560,
                  'font'      : {'size' : 10},
                  'hovermode' : 'x',
                  'margin'    : {'t':26,'b':20,'l':40,'r':0},
@@ -39,7 +46,7 @@ def go(folder):
                  'xaxis'     : {'title': "knowledge",
                                 'range': [0,10],
                                 'tickmode': 'array',
-                                'tickvals': [1,5,9],
+                                'tickvals': [1.5,5,8.5],
                                 'ticktext': ["expert", 
                                              "applied",
                                              "basic"]
